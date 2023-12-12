@@ -17,6 +17,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a merge request!
 ## Usage
 
 ### Config
+
 Clone config file `env.example`, put it on the same directory and rename it to `.env`
 
 
