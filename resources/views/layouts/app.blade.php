@@ -6,6 +6,7 @@
     <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
   </head>
   <body>
     <div class="container">
@@ -90,6 +91,7 @@
       <!-- ============================END OF MAIN================== -->
 
     </div>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
   </body>
 </html>
 
