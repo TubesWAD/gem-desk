@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.coba');
+Route::get('/incident', function () {
+    return view('IncidentManagement/index');
 });
 
-Route::get('/incident', function () {
-    return view('IncidentManagement/edit');
+Route::get('/incident/add', function () {
+    return view('IncidentManagement/addIncident');
 });
