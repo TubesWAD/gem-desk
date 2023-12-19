@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
+Route::get('/leavestype/create', function () {
+    return view('LeavesType/create');
+});
+
+Route::get('/leavestype/view', function () {
+    return view('LeavesType/view');
 });
