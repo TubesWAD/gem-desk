@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/incident', function () {
+Route::get('/Incident', function () {
     return view('IncidentManagement/index');
 });
 
-Route::get('/incident/add', function () {
+Route::get('/Incident/add', function () {
     return view('IncidentManagement/addIncident');
 });
