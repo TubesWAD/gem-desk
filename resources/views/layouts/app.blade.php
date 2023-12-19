@@ -51,10 +51,14 @@
             <span class="material-symbols-outlined">confirmation_number</span>
             <h3>Ticket Management</h3>
           </a>
-          <a href="#">
+          <div>
             <span class="material-symbols-outlined">logout</span>
             <h3>Logout</h3>
-          </a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="btn text-right p-0">Logout</button>
+          </form>
+          </div>
         </div>
       </aside>
       <!-- ============================END OF ASIDE================== -->
