@@ -4,22 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTicket;
 use App\Models\Ticket;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : View
     {
-        //
+        $tickets = Ticket::latest()->paginate(5);
+
+        return view('tickets.index', compact('tickets'))
+            ->with('i', (request()->input('page', 1)-1)*7);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() : View
     {
         return view('tickets.create');
     }
@@ -27,7 +32,7 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         $request->validate([
             'title' => 'required|min:5',
@@ -39,7 +44,7 @@ class TicketController extends Controller
 
         $ticket->title = $request->title;
         $ticket->description = $request->description;
-        $pathFile = $request->file('file')->store('files');
+        $pathFile = $request->file('file')->store('files', 'public');
         $ticket->files =$pathFile;
         $ticket->status = "open";
         $ticket->is_resolved = 0;
@@ -47,7 +52,8 @@ class TicketController extends Controller
         $ticket->assigned_to = 0;
 
         $ticket->save();
-        return redirect()->route('tickets.create');
+        return redirect()->route('tickets.index');
+//            -with('success', 'Ticket created successfully');
     }
 
     /**
@@ -55,7 +61,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-
+        return view('tickets.show', compact('ticket'));
     }
 
     /**
@@ -71,8 +77,6 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-
-
         $request->validate([
             'title' => 'required|min:5',
             'description' => 'required|min:5',
@@ -85,7 +89,7 @@ class TicketController extends Controller
             if ($oldFile = $ticket->files){
                 unlink(storage_path('app/files/').$oldFile);
             }
-            $pathFile = $request->file('file')->store('files');
+            $pathFile = $request->file('file')->store('files', 'public');
             $ticket->files =$pathFile;
         }
 
@@ -93,7 +97,8 @@ class TicketController extends Controller
 
         $ticket->save();
 
-        return redirect()->route('tickets.create');
+        return redirect()->route('tickets.index')
+            -with('success', 'Ticket updated successfully');
 
     }
 
@@ -102,26 +107,29 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $oldFile = $ticket->files;
+        unlink(storage_path('app/').$oldFile);
+        $ticket -> delete();
+
+        return redirect()->route('tickets.index')
+            ->with('success', 'Tickets deleted successfully');
     }
 
-    public function close(Request $request,Ticket $ticket)
-    {
-        $ticket = Ticket::find($request->id);
+    public function close(Request $request,Ticket $ticket): RedirectResponse
+    {;
         $ticket->status = "closed";
-        $ticket-save();
+        $ticket->save();
 
-        return redirect()->route('tickets.create');
+        return redirect()->route('tickets.index');
 
     }
 
     public function reopen(Request $request,Ticket $ticket)
     {
-        $ticket = Ticket::find($request->id);
-        $ticket->status = "reopen";
-        $ticket-save();
+        $ticket->status = "open";
+        $ticket->save();
 
-        return redirect()->route('tickets.create');
+        return redirect()->route('tickets.index');
 
     }
 }

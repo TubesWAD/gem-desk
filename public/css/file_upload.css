@@ -4,10 +4,7 @@
     -webkit-box-sizing: border-box;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: #535c68;
-}
+
 
 .wrapper {
     margin: auto;
@@ -17,7 +14,7 @@ body {
 }
 
 .container {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     /*border: 0.5px solid rgba(130, 130, 130, 0.25);*/

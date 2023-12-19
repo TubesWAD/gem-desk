@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{config('app.name')}}</title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
+
   </head>
   <body>
-    <div class="container">
+    <div class="kontainer">
       <aside>
         <div class="top">
           <div class="logo">
@@ -21,32 +22,32 @@
           </div>
         </div>
 
-        <div class="sidebar">
-          <a href="#">
+        <div class="asidebar">
+          <a href="" class="{{ request()->routeIs('') ? 'active' : '' }}">
             <span class="material-symbols-outlined">manage_accounts</span>
             <h3>Role</h3>
           </a>
-          <a href="#" class="active">
+          <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
             <span class="material-symbols-outlined">person</span>
             <h3>User</h3>
           </a>
-          <a href="#">
+          <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
             <span class="material-symbols-outlined">location_home</span>
             <h3>Organization</h3>
           </a>
-          <a href="#">
+          <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
             <span class="material-symbols-outlined">inventory_2</span>
             <h3>Asset Management</h3>
           </a>
-          <a href="#">
+          <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
             <span class="material-symbols-outlined">support_agent</span>
             <h3>Service Catalog</h3>
           </a>
-          <a href="#">
+          <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
             <span class="material-symbols-outlined">emergency_home</span>
             <h3>Insiden Management</h3>
           </a>
-          <a href="#">
+          <a href="{{route('tickets.index')}}" class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
             <span class="material-symbols-outlined">confirmation_number</span>
             <h3>Ticket Management</h3>
           </a>
