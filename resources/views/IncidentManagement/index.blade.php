@@ -8,20 +8,19 @@
 
     <div class="mt-2">
         <button type="button" class="btn btn-primary">Add Incident</button>
-        <button type="button" class="btn btn-secondary">Delete</button>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-3">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Insiden</th>
+                    <th>Incident</th>
                     <th>Service</th>
-                    <th>Probabilitas</th>
-                    <th>Dampak</th>
-                    <th>Kuadran Risiko</th>
-                    <th>Tingkat Risiko</th>
+                    <th>Asset</th>
+                    <th>Probability</th>
+                    <th>Risk Score</th>
+                    <th>Priority</th>
                     <th>Created</th>
                     <th>Updated</th>
                 </tr>
