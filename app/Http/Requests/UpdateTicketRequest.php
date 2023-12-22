@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTicket extends FormRequest
+class UpdateTicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,15 +24,20 @@ class StoreTicket extends FormRequest
         return [
             'title' => 'required|min:5',
             'description' => 'required|min:5',
+            'files' => 'mimes:pdf,jpg,jpeg,png,doc,docx|max:2500'
         ];
     }
 
-    public function messages()
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
     {
         return [
-            'title.required' => 'Title is required!',
-            'description.required' => 'Description is required!'
+            'title.required' => 'A title is required',
+            'description.required' => 'A description is required',
         ];
     }
-
 }

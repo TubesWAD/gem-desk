@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTicket;
+use App\Http\Requests\StoreTicketRequest;
+use App\Http\Requests\UpdateTicketRequest;
 use App\Models\Ticket;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -32,13 +34,9 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) : RedirectResponse
+    public function store(StoreTicketRequest $request) : RedirectResponse
     {
-        $request->validate([
-            'title' => 'required|min:5',
-            'description' => 'required|min:5',
-            'files' => 'mimes:pdf,jpg,jpeg,png,doc,docx|max:2500'
-        ]);
+
 
         $ticket = new Ticket;
 
@@ -48,10 +46,9 @@ class TicketController extends Controller
         $ticket->files =$pathFile;
         $ticket->status = "open";
         $ticket->is_resolved = 0;
-        $ticket->is_locked = 0;
-        $ticket->assigned_to = 0;
+        $ticket->ticket_type = $request->ticket_type;
 
-        $ticket->save();
+        $ticket->save($request->validated());
         return redirect()->route('tickets.index');
 //            -with('success', 'Ticket created successfully');
     }
@@ -59,7 +56,7 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket)
+    public function show(Ticket $ticket) : View
     {
         return view('tickets.show', compact('ticket'));
     }
@@ -67,7 +64,7 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ticket $ticket)
+    public function edit(Ticket $ticket) : View
     {
         return view('tickets.edit', compact('ticket'));
     }
@@ -75,14 +72,8 @@ class TicketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(UpdateTicketRequest $request, Ticket $ticket) : RedirectResponse
     {
-        $request->validate([
-            'title' => 'required|min:5',
-            'description' => 'required|min:5',
-            'files' => 'mimes:pdf,jpg,jpeg,png,doc,docx|max:2500'
-        ]);
-
         $ticket->title = $request->title;
         $ticket->description = $request->description;
         if ($request->hasFile('files')){
@@ -92,10 +83,9 @@ class TicketController extends Controller
             $pathFile = $request->file('file')->store('files', 'public');
             $ticket->files =$pathFile;
         }
+        $ticket->ticket_type = $request->ticket_type;
 
-        $ticket->assigned_to = $request->assigned_to;
-
-        $ticket->save();
+        $ticket->update($request->validated());
 
         return redirect()->route('tickets.index')
             -with('success', 'Ticket updated successfully');
@@ -105,17 +95,17 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ticket $ticket)
+    public function destroy(Ticket $ticket): RedirectResponse
     {
         $oldFile = $ticket->files;
-        unlink(storage_path('app/').$oldFile);
+        unlink(storage_path('app/public/').$oldFile);
         $ticket -> delete();
 
         return redirect()->route('tickets.index')
             ->with('success', 'Tickets deleted successfully');
     }
 
-    public function close(Request $request,Ticket $ticket): RedirectResponse
+    public function close(Ticket $ticket): RedirectResponse
     {;
         $ticket->status = "closed";
         $ticket->save();
@@ -124,7 +114,7 @@ class TicketController extends Controller
 
     }
 
-    public function reopen(Request $request,Ticket $ticket)
+    public function reopen(Ticket $ticket): RedirectResponse
     {
         $ticket->status = "open";
         $ticket->save();

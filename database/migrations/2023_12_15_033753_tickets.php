@@ -15,11 +15,10 @@ return new class extends Migration
            $table->id();
            $table->string('title');
            $table->text('description');
+           $table->string('ticket_type');
            $table->string('files');
            $table->string('status');
            $table->tinyInteger('is_resolved');
-           $table->tinyInteger('is_locked');
-           $table->bigInteger('assigned_to');
            $table->timestamps();
         });
     }

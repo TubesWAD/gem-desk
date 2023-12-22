@@ -36,6 +36,24 @@
                 </h2></label>
             <textarea class="form-control" name="description"  id="description" rows="3" placeholder="write description here....">{{old('description', $ticket->description)}}</textarea>
         </div>
+        <div class="mb-3">
+            <label for="ticketType" class="form-label"><h2>Ticket Type</h2></label>
+            <div class="input-group">
+                <select id="ticketType" name="ticketType" class="form-select">
+{{--                    @foreach($ticketTypes as $ticketType => $value)--}}
+{{--                        <option value="{{$ticketType}}"--}}
+{{--                                @if ($ticketType == old('ticketType', $model->option))--}}
+{{--                                    selected="selected"--}}
+{{--                               @endif>--}}
+{{--                            {{$value}}--}}
+{{--                        </option>--}}
+{{--                    @endforeach--}}
+                    <option>Kebakaran</option>
+                    <option>Internet Mati</option>
+                </select>
+                <a class="btn btn-outline-primary" href="#" role="button">No Types</a>
+            </div>
+        </div>
         <div class="form-group mb-3">
             <div class="upload-container">
                 <div class="border-container">
