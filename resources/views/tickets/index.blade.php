@@ -48,10 +48,15 @@
                     <td class="d-flex justify-content-center">
                         <a class="btn btn-success me-1" href="{{ route('tickets.show', $ticket->id) }}">Show</a>
                         <a class="btn btn-primary me-1" href="{{ route('tickets.edit', $ticket->id) }}">Edit</a>
-                        <form action="{{route('tickets.destroy', $ticket->id)}}" method="post">
+                        <a class="btn btn-danger me-1" href="#" onclick="
+                            event.preventDefault();
+                            if(confirm('Do you want to delete this ?')){
+                                document.getElementById('delete-row-{{ $ticket->id }}').submit();
+                            }
+                        ">Delete</a>
+                        <form id="delete-row-{{$ticket->id}}" action="{{route('tickets.destroy', $ticket->id)}}" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
                             @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger me-1">Delete</button>
                         </form>
                     </td>
                 </tr>

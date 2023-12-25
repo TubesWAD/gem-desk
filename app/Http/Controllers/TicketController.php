@@ -93,7 +93,9 @@ class TicketController extends Controller
         $ticket->ticket_type = $request->ticket_type;
 
         $ticket->save($request->validated());
-        return redirect(route('tickets.index'));
+        return redirect(route('tickets.index'))
+            ->with('success','Ticket created successfully')
+            ->withErrors('error','Ticket created unsuccessfully');
     }
 
     /**
@@ -130,7 +132,9 @@ class TicketController extends Controller
 
         $ticket->update($request->validated());
 
-        return redirect(route('tickets.index'))->with('success', 'Ticket updated successfully');
+        return redirect(route('tickets.index'))
+            ->with('success', 'Ticket updated successfully')
+            ->withErrors('error', 'Ticket updated unsuccessfully');
 
     }
 
@@ -143,7 +147,9 @@ class TicketController extends Controller
         unlink(storage_path('app/public/') . $oldFile);
         $ticket->delete();
 
-        return redirect(route('tickets.index'))->with('error', 'Sorry, unable to delete this!');
+        return redirect(route('tickets.index'))
+            ->with('success', 'Deleted successfully')
+            ->withErrors('error', 'Sorry, unable to delete this!');
     }
 
     public function close(Ticket $ticket): RedirectResponse
