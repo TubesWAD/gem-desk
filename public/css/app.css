@@ -233,7 +233,7 @@ main .container-fitur {
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
     overflow-y: scroll;
-    height: 600px;
+    height: 650px;
 }
 
 .container-fitur::-webkit-scrollbar{

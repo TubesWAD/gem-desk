@@ -1,11 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+
     <h1>Add Ticket</h1>
     <br>
     <link href="{{asset('css/file_upload.css')}}" rel="stylesheet" />
     <form action="{{ route('tickets.store') }}" method="POST" enctype="multipart/form-data" name="formName">
         @csrf
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <div class="alert-heading">
+                    <h4>Snapped!!</h4>
+                </div>
+                There are something wrong with your input.
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="mb-3">
             <label class="form-label" for="title"><h2>Title</h2></label>
             <input type="text" name="title" id="title" class="form-control" placeholder="write title here....">

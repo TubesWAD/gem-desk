@@ -39,7 +39,7 @@
         <div class="mb-3">
             <label for="ticketType" class="form-label"><h2>Ticket Type</h2></label>
             <div class="input-group">
-                <select id="ticketType" name="ticketType" class="form-select">
+                <select id="ticketType" name="ticket_type" class="form-select">
 {{--                    @foreach($ticketTypes as $ticketType => $value)--}}
 {{--                        <option value="{{$ticketType}}"--}}
 {{--                                @if ($ticketType == old('ticketType', $model->option))--}}
