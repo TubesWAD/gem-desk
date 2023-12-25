@@ -3,6 +3,29 @@
 @section('content')
     <div class="d-flex">
         <h1 class="font-weight-bold justify-content-start">Edit Ticket</h1>
+        @if($errors->any())
+            <div class="alert alert-danger" >
+                <div class="alert-heading">
+                    <h4>Snapped!!</h4>
+                </div>
+                There are something wrong with your input.
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if($message = Session::get('success'))
+            <div class="alert alert-success" id="alert">
+                {{ $message }}
+            </div>
+        @endif
+        @if($message = Session::get('error'))
+            <div class="alert alert-error" id="alert">
+                {{ $message }}
+            </div>
+        @endif
         <div class=" justify-content-end">
             @if($ticket->status == 'open')
                 <form action="{{route('tickets.close', $ticket)}}" method="post">
@@ -39,7 +62,7 @@
         <div class="mb-3">
             <label for="ticketType" class="form-label"><h2>Ticket Type</h2></label>
             <div class="input-group">
-                <select id="ticketType" name="ticketType" class="form-select">
+                <select id="ticketType" name="ticket_type" class="form-select">
 {{--                    @foreach($ticketTypes as $ticketType => $value)--}}
 {{--                        <option value="{{$ticketType}}"--}}
 {{--                                @if ($ticketType == old('ticketType', $model->option))--}}

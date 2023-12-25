@@ -2,6 +2,29 @@
 
 @section('content')
     <h1 class="font-weight-bold justify-content-start">Ticket</h1>
+    @if($errors->any())
+        <div class="alert alert-danger" >
+            <div class="alert-heading">
+                <h4>Snapped!!</h4>
+            </div>
+            There are something wrong with your input.
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if($message = Session::get('success'))
+        <div class="alert alert-success" id="alert">
+            {{ $message }}
+        </div>
+    @endif
+    @if($message = Session::get('error'))
+        <div class="alert alert-error" id="alert">
+            {{ $message }}
+        </div>
+    @endif
     <br>
     <link href="{{asset('css/file_upload.css')}}" rel="stylesheet" />
         <div class="mb-3">
