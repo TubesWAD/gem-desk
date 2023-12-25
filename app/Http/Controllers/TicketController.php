@@ -79,9 +79,7 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request): RedirectResponse
     {
-
         $ticket = new Ticket;
-
         $ticket->title = $request->title;
         $ticket->description = $request->description;
         if ($request->hasFile('file')){
@@ -95,7 +93,6 @@ class TicketController extends Controller
         $ticket->ticket_type = $request->ticket_type;
 
         $ticket->save($request->validated());
-        Session::flash('success', 'Ticket created successfully');
         return redirect(route('tickets.index'));
     }
 
