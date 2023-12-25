@@ -9,15 +9,13 @@
     </div>
     <br>
     @if($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade shadow" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert alert-success" id="alert">
+            {{ $message }}
         </div>
     @endif
-    @if(session('error'))
-        <div class="alert alert-danger alert-dismissible fade shadow" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    @if($message = Session::get('error'))
+        <div class="alert alert-error" id="alert">
+            {{ $message }}
         </div>
     @endif
     <div>

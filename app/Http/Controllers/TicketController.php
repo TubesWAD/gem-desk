@@ -84,8 +84,12 @@ class TicketController extends Controller
 
         $ticket->title = $request->title;
         $ticket->description = $request->description;
-        $pathFile = $request->file('file')->store('files', 'public');
-        $ticket->files = $pathFile;
+        if ($request->hasFile('file')){
+            $pathFile = $request->file('file')->store('files', 'public');
+            $ticket->files = $pathFile;
+        }else{
+            $ticket->files = '';
+        }
         $ticket->status = "open";
         $ticket->is_resolved = 0;
         $ticket->ticket_type = $request->ticket_type;

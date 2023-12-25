@@ -19,11 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/tickets',TicketController::class);
-Route::get('/tickets/search', [TicketController::class, 'search'])->name('tickets.search');
 
 Route::patch('/tickets/{ticket}/close', [TicketController::class, 'close'])->name('tickets.close');
 Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->name('tickets.reopen');
 
-
-//Route::get('/create', [TicketController::class, 'create'])->name('tickets.create');
-//Route::post('/create', [TicketController::class, 'store'])->name('tickets.create');

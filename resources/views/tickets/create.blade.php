@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1>Add Ticket</h1>
     <br>
     <link href="{{asset('css/file_upload.css')}}" rel="stylesheet" />
     <form action="{{ route('tickets.store') }}" method="POST" enctype="multipart/form-data" name="formName">
         @csrf
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" >
                 <div class="alert-heading">
                     <h4>Snapped!!</h4>
                 </div>
@@ -20,14 +19,14 @@
                 </ul>
             </div>
         @endif
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
+        @if($message = Session::get('success'))
+            <div class="alert alert-success" id="alert">
+                {{ $message }}
             </div>
         @endif
-        @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
+        @if($message = Session::get('error'))
+            <div class="alert alert-error" id="alert">
+                {{ $message }}
             </div>
         @endif
         <div class="mb-3">
@@ -77,5 +76,5 @@
 @endsection
 
 
-{{--<script src="{{ asset('js/file_upload.js') }}"></script>--}}
+
 

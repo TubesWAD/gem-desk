@@ -92,6 +92,11 @@
 
 </div>
 @stack('script')
+<script>
+    $("#alert").fadeTo(1500,300).slideUp(300, function (){
+        $('#alert').slideUp(300);
+    });
+</script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>
