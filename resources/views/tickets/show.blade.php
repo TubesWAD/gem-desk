@@ -35,8 +35,25 @@
             <label class="form-label" for="description"><h2>Description</h2></label>
             <textarea class="form-control" name="description"  id="description" rows="3" placeholder="write description here...." disabled>{{$ticket->description}}</textarea>
         </div>
-
-
+        <form action="{{ route('tickets.createMessage', $ticket->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label" for="message"><h2>Solution</h2></label>
+                <textarea class="form-control" name="message"  id="message" rows="3" placeholder="write solution here...."></textarea>
+            </div>
+            <div class="form-group d-flex flex-row-reverse">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        @if($ticket->solutions->count() > 0)
+            @foreach($ticket->solutions as $solution)
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <p class="card-text">{{$solution->messages}}</p>
+                    </div>
+                </div>
+            @endforeach
+        @endif
 
 
 @endsection
