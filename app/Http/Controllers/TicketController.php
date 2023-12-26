@@ -28,11 +28,12 @@ class TicketController extends Controller
                     ->limit(10)
                     ->get();
                 $output = '';
+                $loop = 0;
                 if (count($data) > 0){
-                    foreach ($data as $index => $row){
+                    foreach ($data as $row){
                         $output .= '
                                     <tr>
-                                        <td>' . $index + $data->firstItem() . '</td>
+                                        <td>' . $loop+1 . '</td>
                                         <td>' . $row->title . '</td>
                                         <td>' . $row->description . '</td>
                                         <td>' . $row->ticket_type . '</td>
@@ -48,6 +49,7 @@ class TicketController extends Controller
                                         </td>
                                         </tr>
                                     ';
+                        $loop+=1;
                     }
                 }else{
                     $output .= '<td colspan="6">
