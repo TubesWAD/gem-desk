@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leavestype', function (Blueprint $table){
-            $table -> id();
-            $table -> string('name_leaves');
-            $table -> string('description');
-            $table -> string('color');
-
-            
-            
-        
+        Schema::create('leavetypes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nameLeavetype');
+            $table->string('description');
+            $table->integer('maxDuration');
+            $table->enum('status',['approved','unapproved',]);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leavestype');
+        Schema::dropIfExists('leavetypes');
     }
 };

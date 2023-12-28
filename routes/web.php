@@ -1,9 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< Updated upstream
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SolutionController;
 
+=======
+use App\Http\Controllers\LeavetypeController;
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +19,17 @@ use App\Http\Controllers\SolutionController;
 |
 */
 
-Route::get('/leavestype/create', function () {
-    return view('LeavesType/create');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/leavestype/view', function () {
-    return view('LeavesType/view');
-});
+Route::get('/create',[LeavetypeController::class, 'create'])->name('create');
+Route::get('/insertdata',[LeavetypeController::class, 'insertdata'])->name('insertdata');
+
+Route::get('/view',[LeavetypeController::class, 'view'])->name('view');
+
+Route::get('/showdata/{id}',[LeavetypeController::class, 'showdata'])->name('showdata');
+Route::post('/update/{id}',[LeavetypeController::class, 'update'])->name('update');
+
+Route::get('/delete/{id}',[LeavetypeController::class, 'delete'])->name('delete');
+
