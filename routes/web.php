@@ -15,8 +15,6 @@ use App\Http\Controllers\TicketController;
 |
 */
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 Route::get('/', function () {
     return view('layouts.app');
 });
@@ -26,9 +24,7 @@ Route::resource('/tickets',TicketController::class);
 Route::patch('/tickets/{ticket}/close', [TicketController::class, 'close'])->name('tickets.close');
 Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->name('tickets.reopen');
 
-=======
-=======
->>>>>>> Stashed changes
+
 // Route::get('/service/index', function () {
 //     return view('ServiceCatalog/index');
 // });
@@ -45,8 +41,5 @@ Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->n
 Route::resource('services', ServicesController::class);
 
 
-Route::get('/services/{service}', 'ServiceController@show')->name('services.show');
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+// Route::get('/services/{service}', 'ServiceController@show')->name('services.show');
+

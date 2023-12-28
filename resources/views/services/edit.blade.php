@@ -4,14 +4,10 @@
 
 <div>
     <div class="row">
-      <div class="col-lg-12 margin-tb">
-          <div class="pull-left">
-              <h2>Edit Product</h2>
-          </div>
-          <div class="pull-right">
-              <a class="btn btn-primary" href="{{ route('services.index') }}"> Back</a>
-          </div>
-      </div>
+        <div class="col-lg-12 margin-tb d-flex align-items-center" style="border-bottom: 2px solid #ccc; padding-bottom: 0px; margin-bottom: 20px;">
+            <a class="btn btn-primary" href="{{ route('services.index') }}" style="padding-bottom: 10px; margin-bottom: 15px; margin-right: 30px;">Back</a>
+            <h2 style="padding-bottom: 10px; margin-bottom: 10px;">Edit {{ $service->name }} Service</h2>
+        </div>
     </div>
 
   @if ($errors->any())

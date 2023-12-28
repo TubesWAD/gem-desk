@@ -37,6 +37,12 @@ class ServicesController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'service_categories' => 'required',
+            'cost' => 'required',
+            'availability' => 'required',
+            'hours' => 'required',
+            'owned' => 'required',
+            'photo'
         ]);
         
         Service::create($request->all());
@@ -68,7 +74,13 @@ class ServicesController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'description' => 'required',
+            'service_categories' => 'required',
+            'cost' => 'required',
+            'availability' => 'required',
+            'hours' => 'required',
+            'owned' => 'required',
+            'photo'
         ]);
         
         $service->update($request->all());

@@ -40,7 +40,7 @@
                 <span class="material-symbols-outlined">inventory_2</span>
                 <h3>Asset Management</h3>
             </a>
-            <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('services.index')}}" class="{{ request()->routeIs('services**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">support_agent</span>
                 <h3>Service Catalog</h3>
             </a>

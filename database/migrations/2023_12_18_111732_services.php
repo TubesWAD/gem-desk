@@ -16,6 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('service_categories');
             $table->string('description');
+            $table->string('cost');
+            $table->string('availability');
+            $table->string('hours');
+            $table->string('owned');
+            $table->string('photo');
+
             $table->timestamps();
         });
     }
