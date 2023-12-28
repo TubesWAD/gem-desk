@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -12,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solutions', function (Blueprint $table){
+        Schema::create('incident_temps', function (Blueprint $table){
             $table->id();
-            $table->foreignId('ticket_id')->nullable()->constrained()->onDelete('cascade');
-            $table->text('messages');
+//            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->integer('service_id');
+            $table->string('incident');
+            $table->string('probability');
+            $table->integer('risk_quadrant');
+            $table->string('risk_level');
             $table->timestamps();
         });
     }
@@ -25,9 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('solutions');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+        Schema::dropIfExists('incident_temps');
 
     }
 };

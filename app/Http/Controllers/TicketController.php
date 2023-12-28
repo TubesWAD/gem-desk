@@ -82,7 +82,7 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request): RedirectResponse
     {
-        $ticket = new Ticket;
+        $ticket = new Ticket();
         $ticket->title = $request->title;
         $ticket->description = $request->description;
         if ($request->hasFile('file')){
