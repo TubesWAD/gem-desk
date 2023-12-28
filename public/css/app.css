@@ -60,6 +60,7 @@ body {
 
 a {
     color: var(--color-dark);
+
 }
 
 img {
@@ -162,11 +163,14 @@ aside .asidebar{
 }
 
 aside h3{
-    font-weight: 500; 
+    font-weight: 500;
 }
 
+
+
+
 aside .asidebar a{
-    display: flex; 
+    display: flex;
     color: var(--color-info-dark);
     margin-left: 2rem;
     gap: 1rem;
@@ -174,6 +178,7 @@ aside .asidebar a{
     position: relative;
     height: 4rem;
     transition: all 300ms ease;
+    text-decoration: none;
 }
 
 aside .asidebar a span {
@@ -219,6 +224,7 @@ main {
     margin-top: 1.4rem;
 }
 
+
 main .container-fitur {
     background: var(--color-white);
     padding: var(--card-padding);
@@ -226,8 +232,13 @@ main .container-fitur {
     margin-top: 1rem;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
+    overflow-y: scroll;
+    height: 650px;
 }
 
+.container-fitur::-webkit-scrollbar{
+    display: none;
+}
 main h1 {
     flex: 70% ;
 }
@@ -280,7 +291,10 @@ main .top .profile {
 
 
 /* ========================MEDIA QUERIES=================== */
-@media screen and (max-width: 1200px){ 
+
+
+
+@media screen and (max-width: 1200px){
     .kontainer {
         width: 94%;
         grid-template-columns: 7rem auto 23rem;
