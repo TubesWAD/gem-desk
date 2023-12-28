@@ -48,14 +48,18 @@
                 <span class="material-symbols-outlined">emergency_home</span>
                 <h3>Insiden Management</h3>
             </a>
-            <a href="{{route('tickets.index')}}" class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
+            <a style="text-decoration: none" href="{{route('tickets.index')}}" class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">confirmation_number</span>
                 <h3>Ticket Management</h3>
             </a>
-            <a href="#">
-                <span class="material-symbols-outlined">logout</span>
-                <h3>Logout</h3>
-            </a>
+{{--            <form action="{{route('logout')}}" method="POST">--}}
+{{--                @csrf--}}
+{{--                <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">--}}
+{{--                    <span class="material-symbols-outlined">logout</span>--}}
+{{--                    <h3>Logout</h3>--}}
+{{--                </a>--}}
+{{--            </form> --}}
+
         </div>
     </aside>
     <!-- ============================END OF ASIDE================== -->
