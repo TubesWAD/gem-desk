@@ -20,7 +20,6 @@
                     <th>Asset</th>
                     <th>Probability</th>
                     <th>Risk Impact</th>
-                    <th>Risk Score</th>
                     <th>Priority</th>
                     <th>Created</th>
                     <th>Updated</th>
@@ -35,7 +34,6 @@
                     <td>{{ $incident->asset }}</td>
                     <td>{{ $incident->probability }}</td>
                     <td>{{ $incident->risk_impact }}</td>
-                    <td>{{ $incident->risk_score }}</td>
                     <td>{{ $incident->priority }}</td>
                     <td>{{ $incident->created_at }}</td>
                     <td>{{ $incident->updated_at }}</td>

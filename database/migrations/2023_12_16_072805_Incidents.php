@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('asset_id')->nullable();
             $table->string('probability');
             $table->string('risk_impact');
+            $table->string('priority');
             $table->string('incident_desc');
             $table->timestamps();
         });

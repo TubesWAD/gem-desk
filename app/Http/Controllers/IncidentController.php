@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Incident;
 use Illuminate\Http\Request;
-use App\Http\Controllers\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
+//use App\Http\Controllers\RedirectResponse;
 use Illuminate\View\View;
 
 
@@ -40,9 +41,10 @@ class IncidentController extends Controller
         ]);
 
         $incident = new Incident();
-        $incident->incident = $request->incdient;
+        $incident->incident = $request->incident;
         $incident->probability = $request->probability;
         $incident->risk_impact = $request->risk_impact;
+        $incident->priority = $request->priority;
         $incident->incident_desc = $request->incident_desc;
         $incident->service_id = 1;
         $incident->asset_id = 1;
@@ -62,7 +64,7 @@ class IncidentController extends Controller
             $incident->priority = "High";
         }
 
-        Incident::create($request->all());
+        $incident->save();
         
         return redirect()->route('incidents.index')
                         ->with('success', 'Incident created successfuly.');
