@@ -4,9 +4,10 @@
 
 <div class="container mt-5">
     <h2>Add User</h2>
-    <form action="process.php" method="post">
+    <form action="{{ route('userManagements.store') }}" method="POST">
+        @csrf
         <div class="form-group">
-            <label for="nama">Nama:</label>
+            <label for="nama">Name:</label>
             <input type="text" class="form-control" id="nama" name="nama" required>
         </div>
         <div class="form-group">
@@ -33,8 +34,8 @@
             <textarea class="form-control" id="description" name="description"></textarea>
         </div>
         <div class="form-group">
-            <label for="login_name">Username:</label>
-            <input type="text" class="form-control" id="login_name" name="login_name" required>
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
@@ -45,6 +46,7 @@
             <input type="password" class="form-control" id="retype_password" name="retype_password" required>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary" href="/view">Cancel</a>
     </form>
 </div>
 
