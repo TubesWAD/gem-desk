@@ -12,9 +12,12 @@ class Incident extends Model
     protected $table = "incidents";
 
     protected $fillable = [
-        'insiden',
-        'probabilitas',
-        'kuadran_risiko',
-        'tingkat_risiko',
+        'incident',
+        'probability',
+        'risk_impact',
+        'priority',
+        'incident_desc',
+        'service_id',
+        'asset_id',
     ];
 }

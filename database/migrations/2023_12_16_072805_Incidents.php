@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('incidents', function (Blueprint $table) {
             $table->id();
+            $table->string('incident');
+            $table->integer('service_id')->nullable();
+            $table->integer('asset_id')->nullable();
+            $table->string('probability');
+            $table->string('risk_impact');
+            $table->string('incident_desc');
             $table->timestamps();
-            $table->foreignId('service')->constrained()->onDelete('cascade');
-            $table->string('insiden');
-            $table->string('probabilitas');
-            $table->integer('kuadran_risiko');
-            $table->string('tingkat_risiko');
         });
     }
 

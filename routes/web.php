@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IncidentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/Incident', function () {
-    return view('IncidentManagement/index');
-});
-
-Route::get('/Incident/add', function () {
-    return view('IncidentManagement/addIncident');
-});
+Route::resource('incidents', IncidentController::class);
