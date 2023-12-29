@@ -25,3 +25,36 @@ Route::post('/tickets/{id}/createMessage', [TicketController::class, 'createMess
 Route::patch('/tickets/{ticket}/close', [TicketController::class, 'close'])->name('tickets.close');
 Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->name('tickets.reopen');
 
+/**
+ * organization routes
+ */
+//Route::get('/organizations','OrganizationController@index');
+
+//Route::resource('/organizations', OrganizationController::class);
+Route::get('/organizations/{id}/createMessage', [OrganizationController::class, 'createMessage'])->name('organizations.createMessage');
+
+ Route::get('/organization/show', function () {
+     return view('organizations.show');
+ });
+
+ Route::get('/organizations', function () {
+     return view('organizations.index');
+ });
+
+ Route::get('/organization/create', function () {
+     return view('organizations.create');
+ });
+
+// Route::get('/organization/edit', function () {
+//     return view('organizations.edit');
+// });
+
+Route::resource('/departments', OrganizationController::class);
+
+Route::get('/department', function () {
+    return view('departments.index');
+});
+
+Route::get('/department/create', function () {
+    return view('departments.create');
+});
