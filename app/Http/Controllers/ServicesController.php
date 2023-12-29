@@ -7,18 +7,58 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ServicesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request)
     {
-        $services = Service::latest()->paginate(5);
-        
-        return view('services.index',compact('services'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        $query = $request->get('query');
+        if ($request->ajax()) {
+            $data = Service::query()->where('name', 'LIKE', $query . '%')
+                ->limit(10)
+                ->get();
+            $output = '';
+            $loop = 0;
+            if (count($data) > 0) {
+                foreach ($data as $service) {
+                    echo '
+                        <tr>
+                            <td>' . ($loop + 1) . '</td>
+                            <td>' . $service->name . '</td>
+                            <td>' . $service->service_categories . '</td>
+                            <td>' . $service->description . '</td>
+                            <td class="d-flex justify-content-center">
+                                <a class="btn btn-success me-1" href="' . route("services.show", $service->id) . '">Show</a>
+                                <a class="btn btn-primary me-1" href="' . route("services.edit", $service->id) . '">Edit</a>
+                                <form action="' . route("services.destroy", $service->id) . '" method="post">
+                                    ' . csrf_field() . '
+                                    ' . method_field("DELETE") . '
+                                    <button type="submit" class="btn btn-danger me-1">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    ';
+                    $loop += 1;
+                }
+            }else{
+                $output .= '<td colspan="6">
+                        <div class="d-flex justify-content-center">
+                            No Record Found
+                        </div>
+                    </td>
+                    ';
+            }
+            return $output;
+        }
+
+        $services = Service::query()->where('name', 'LIKE', '%' . $query . '%')
+            ->simplePaginate(8);
+        return view('services.index',compact('services'));
+                    
     }
 
     /**
@@ -42,11 +82,27 @@ class ServicesController extends Controller
             'availability' => 'required',
             'hours' => 'required',
             'owned' => 'required',
-            'photo'
+            'files' => 'mimes:pdf,jpg,jpeg,png,doc,docx|max:2500',
         ]);
-        
-        Service::create($request->all());
-         
+
+        $service = new Service;
+        $service->name = $request->name;
+        $service->service_categories = $request->service_categories;
+        $service->description = $request->description;
+        $service->cost = $request->cost;
+        $service->availability = $request->availability;
+        $service->hours = $request->hours;
+        $service->owned = $request->owned;
+
+        if ($request->hasFile('file')){
+            $pathFile = $request->file('file')->store('files', 'public');
+            $service->files = $pathFile;
+        }else{
+            $service->files = '';
+        }
+
+        $service->save();
+
         return redirect()->route('services.index')
                         ->with('success','Service created successfully.');
     }
@@ -80,11 +136,42 @@ class ServicesController extends Controller
             'availability' => 'required',
             'hours' => 'required',
             'owned' => 'required',
-            'photo'
+            'files'=> 'mimes:pdf,jpg,jpeg,png,doc,docx|max:2500',
         ]);
-        
-        $service->update($request->all());
-        
+
+        $service->name = $request-> name;
+        $service->service_categories = $request-> service_categories;
+        $service->description = $request-> description;
+        $service->cost = $request-> cost;
+        $service->availability = $request-> availability;
+        $service->hours = $request-> hours;
+        $service->owned = $request-> owned;
+
+
+        // if ($request->hasFile('files')) {
+        //     if ($oldFile = $service->files) {
+        //         unlink(storage_path('app/public/files') . $oldFile);
+        //     }
+        //     $pathFile = $request->file('file')->store('files', 'public');
+        //     $service->files = $pathFile;
+        // }
+
+        if ($request->hasFile('files')) {
+            $oldFile = $service->files;
+
+            if ($oldFile) {
+                $fullOldFilePath = 'public/files/' . $oldFile;
+                if (Storage::exists($fullOldFilePath)) {
+                    Storage::delete($fullOldFilePath);
+                }
+            }
+
+            $pathFile = $request->file('files')->store('files', 'public');
+            $service->files = $pathFile;
+         }
+
+        $service->update();
+
         return redirect()->route('services.index')
                         ->with('success','Service updated successfully');
     }
@@ -93,6 +180,8 @@ class ServicesController extends Controller
      */
     public function destroy(Service $service): RedirectResponse
     {
+        $oldFile = $service->files;
+        unlink(storage_path('app/public') . $oldFile);
         $service->delete();
 
         return redirect()->route('services.index')

@@ -21,7 +21,7 @@
             </div>
         @endif
 
-        <form action="{{ route('services.store') }}" method="POST">
+        <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
             
@@ -53,7 +53,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
                     <div class="form-group">
                         <strong>Icon Upload:</strong>
-                        <input type="file" name="photo" class="form-control" placeholder="Icon Upload">
+                        <input type="file" name="file" class="form-control" placeholder="Icon Upload">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
@@ -82,6 +82,7 @@
                         <input type="text" name="cost" class="form-control" placeholder="cost">
                     </div>
                 </div>
+            
             </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 20px;">
                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('availability');
             $table->string('hours');
             $table->string('owned');
-            $table->string('photo');
+            $table->string('files');
 
             $table->timestamps();
         });
