@@ -6,6 +6,7 @@
     <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
 
   </head>
@@ -27,7 +28,7 @@
             <span class="material-symbols-outlined">manage_accounts</span>
             <h3>Role</h3>
           </a>
-          <a href="#" class="active">
+          <a href="#">
             <span class="material-symbols-outlined">person</span>
             <h3>User</h3>
           </a>
@@ -35,7 +36,7 @@
             <span class="material-symbols-outlined">location_home</span>
             <h3>Organization</h3>
           </a>
-          <a href="#">
+          <a href="{{ route('assetManagement.index')}}" class="{{ request()->routeIs('assetManagement**') ? 'active' : '' }}">
             <span class="material-symbols-outlined">inventory_2</span>
             <h3>Asset Management</h3>
           </a>
@@ -92,7 +93,12 @@
       <!-- ============================END OF MAIN================== -->
 
     </div>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-  </body>
+@stack('script')
+<script>
+    $("#alert").fadeTo(1500,300).slideUp(300, function (){
+        $('#alert').slideUp(300);
+    });
+</script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+</body>
 </html>
-
