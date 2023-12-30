@@ -148,15 +148,6 @@ class ServicesController extends Controller
         $service->hours = $request-> hours;
         $service->owned = $request-> owned;
 
-
-        // if ($request->hasFile('files')) {
-        //     if ($oldFile = $service->files) {
-        //         unlink(storage_path('app/public/files') . $oldFile);
-        //     }
-        //     $pathFile = $request->file('file')->store('files', 'public');
-        //     $service->files = $pathFile;
-        // }
-
         if ($request->hasFile('files')) {
             $oldFile = $service->files;
 
