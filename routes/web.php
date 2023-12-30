@@ -16,7 +16,8 @@ use App\Http\Controllers\LeaveTypeController;
 |
 */
 
-Route::resource('/leavesTypes', LeaveTypeController::class);
+Route::resource('/leaveTypes', LeaveTypeController::class);
+Route::patch('/leaveTypes/{leaveType}/approve', [LeaveTypeController::class, 'approve'])->name('leaveTypes.approve');
 
 Route::resource('/tickets',TicketController::class);
 Route::post('/tickets/{id}/createMessage', [TicketController::class, 'createMessage'])->name('tickets.createMessage');

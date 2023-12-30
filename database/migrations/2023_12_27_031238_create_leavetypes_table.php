@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('leave_types', function (Blueprint $table) {
             $table->id();
-            $table->string('nameLeavetype');
+            $table->string('name');
             $table->string('description');
-            $table->integer('maxDuration');
+            $table->integer('max_duration');
             $table->enum('status',['approved','unapproved',]);
             $table->timestamps();
         });

@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class LeaveType extends Model
 {
     use HasFactory;
-    protected $fillable=[
-        'nameLeavetype',
+    protected $guarded=[];
+
+    protected $fillable = [
+        'name',
         'description',
-        'maxDuration',
-        'status',
+        'max_duration',
+        'status'
     ];
 
 }

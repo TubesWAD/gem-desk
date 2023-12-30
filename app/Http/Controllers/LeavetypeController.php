@@ -2,83 +2,104 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLeaveTypeRequest;
+use App\Http\Requests\UpdateLeaveTypeRequest;
+use App\Models\LeaveType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\Models\LeaveType;
+
+
 
 class LeaveTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $data = LeaveType::all();
-        return view('leavesTypes.index', compact('data'));
+    public function index(Request $request){
+        $query = $request->get('query');
+        if($request->ajax()){
+            $data = LeaveType::query()->where('name', 'LIKE', $query . '%')
+                ->limit(10)
+                ->get();
+            $output = '';
+            $loop = 0;
+            if (count($data) > 0){
+                foreach ($data as $row){
+                    $output .= '
+                        <tr>
+                            <th scope="row">' . $loop . '</th>
+                            <td>' . $row->name . '</td>
+                            <td>' . $row->max_duration . '</td>
+                            <td>' . $row->status . '</td>
+                            <td>
+                                <form action="' . route('leaveTypes.approve', $row->id) . '" method="post">
+                                    ' . csrf_field() . '
+                                    ' . method_field('PATCH') . '
+                                    <button type="submit" class="btn btn-submit" href="' . route('leaveTypes.index') . '">Approve</button>
+                                </form>
+                                <a href="' . route('leaveTypes.show', $row->id) . '" class="btn btn-info" style="margin-right: 2%">Show</a>
+                                <a class="btn btn-danger me-1" href="#" onclick="
+                                    event.preventDefault();
+                                    if(confirm(\'Do you want to delete this?\')){
+                                        document.getElementById(\'delete-row-' . $row->id . '\').submit();
+                                    }
+                                ">Delete</a>
+                                <form id="delete-row-' . $row->id . '" action="' . route('leaveTypes.destroy', $row->id) . '" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    ' . csrf_field() . '
+                                </form>
+                            </td>
+                        </tr>';
+                    $loop += 1;
+                }
+            }else{
+                $output .= '<td colspan="5">
+                            <div class="d-flex justify-content-center">
+                                No Record Found
+                            </div>
+                        </td>';
+            }
+            return $output;
+        }
+
+
+        $leaveTypes = LeaveType::query()->where('name', 'LIKE', '%' . $query . '%')
+            ->simplePaginate(8);
+        return view('leaveTypes.index', compact('leaveTypes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('leavesTypes.create');
+    public function create(){
+        return view('leaveTypes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreLeaveTypeRequest $request): RedirectResponse
     {
-        $request->validate([
-            'nameLeavetype' => 'required',
-            'description' => 'required',
-            'maxDuration' => 'required',
-            'status' => 'required'
-        ]);
-        
-        LeaveType::create($request->all());
-         
-        return redirect()->route('leavesTypes.index');
+        $leaveType = new LeaveType();
+        $leaveType->name = $request->name;
+        $leaveType->description = $request->description;
+        $leaveType->max_duration = $request->max_duration;
+
+        $leaveType->save($request->validated());
+        return redirect()->route('leaveTypes.index')
+            ->with('success','Leave Type added successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $data = LeaveType::find($id);
-        //dd($data);
-        return view('leavesTypes.edit', compact('data'));
+
+    public function show(LeaveType $leaveType){
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(LeaveType $leaveType)
     {
-        $data = LeaveType::find($id);
-        return view('leavesTypes.edit', compact('data'));
+        return view('leaveTypes.edit', compact('leaveType'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $data = LeaveType::find($id);
-        $data->update($request->all());
-        return redirect()->route('leavesTypes.index');
-   
+    public function update(UpdateLeaveTypeRequest $request, LeaveType $leaveType){
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(LeaveType $leave_types): RedirectResponse
+    public function destroy(LeaveType $leaveType){
+
+    }
+
+    public function approve(LeaveType $leaveType)
     {
-        $leave_types->delete();
-        return redirect(route('leavesTypes.index'));
+
     }
 }
