@@ -1,0 +1,137 @@
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363939;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem (var(--color-light));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #2F4A6D;
+    /* Warna secondary biru tua */
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+header h1 {
+    color: #fff;
+}
+
+header p {
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    /* Warna primary putih */
+    padding: 10px;
+}
+
+nav a {
+    color: #333;
+    /* Warna secondary biru tua */
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.login-register {
+    display: flex;
+    align-items: center;
+}
+
+.login-register a {
+    margin-left: 15px;
+}
+
+.card {
+    max-width: 540px;
+    margin-bottom: 20px;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    /* Warna primary putih */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #2F4A6D;
+    /* Warna secondary biru tua */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #2F4A6D;
+    /* Warna secondary biru tua (hover) */
+}
+
+footer {
+    background-color: #2F4A6D;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    color: white;
+}
