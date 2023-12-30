@@ -21,11 +21,12 @@
     <nav>
         <a href="#home">Home</a>
         <div class="login-register">
-            <a href="#login">Login</a>
-            <a href="#register">Register</a>
+            <a id="login" href="#login">Login</a>
+            <a id="register" href="#register">Register</a>
         </div>
     </nav>
 
+    <div class="container mt-4">
     <div class="card-deck">
         <div class="card mb-3">
             <img src="..." class="card-img-top" alt="...">
@@ -57,23 +58,36 @@
             </div>
         </div>
     </div>
+    </div>
 
-    <section>
-        <h2>Welcome to Our Service Desk</h2>
-        <p>Experience top-notch IT support with our dedicated service desk team. We are here to help you with any
-            technical issues and inquiries you may have.</p>
-        <a href="#contact" class="cta-button">Contact Us</a>
-    </section>
 
-    <section>
-        <h2>Contact Us</h2>
-        <p>Have questions or need assistance? Feel free to reach out to us.</p>
-        <p>Email: support@servicedesk.com</p>
-        <p>Phone: (123) 456-7890</p>
-    </section>
+    <div class="container">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <section>
+                <h2>Welcome to Our Service Desk</h2>
+                <p>Experience top-notch IT support with our dedicated service desk team. We are here to help you with any
+                    technical issues and inquiries you may have.</p>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section>
+                <h2>Contact Us</h2>
+                <p>Have questions or need assistance? Feel free to reach out to us.</p>
+                <p>Email: support@servicedesk.com</p>
+                <p>Phone: +62 85695470495</p>
+            </section>
+        </div>
+    </div>
+    </div>
+
+
+
 
     <footer>
-        <p>&copy; 2023 Service Desk. All rights reserved.</p>
+        <p>&copy; 2023 Gem-Desk. All rights reserved.</p>
     </footer>
 </body>
 

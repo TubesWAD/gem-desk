@@ -63,28 +63,43 @@ header p {
 }
 
 nav {
+    height: 70px; /* Sesuaikan dengan tinggi yang Anda inginkan */
+    background-color: #fff; /* Tambahkan warna latar belakang jika diperlukan */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    /* Warna primary putih */
-    padding: 10px;
+    align-items: center; /* Pusatkan vertikal kontennya */
+    justify-content: space-between; /* Letakkan elemen ke ujung kiri dan ujung kanan */
+    padding: 0 20px; /* Tambahkan padding untuk memberi ruang di sekitar kontennya */
 }
 
 nav a {
-    color: #333;
-    /* Warna secondary biru tua */
     text-decoration: none;
-    margin: 0 15px;
+    color: #343a40;
+    margin-right: 20px;
+    padding: 10px 15px; /* Memberikan padding pada tombol */
+    border-radius: 5px; /* Memberikan sudut melengkung pada tombol */
 }
 
-.login-register {
-    display: flex;
-    align-items: center;
+nav a:hover {
+    background-color: #2F4A6D; /* Warna latar belakang saat tombol dihover */
+    color: #fff; /* Warna teks saat tombol dihover */
 }
 
 .login-register a {
-    margin-left: 15px;
+    margin-right: 0;
+}
+
+.login-register a#login {
+    background-color: #2F4A6D; /* Warna latar belakang tombol Login */
+    color: #fff; /* Warna teks tombol Login */
+}
+
+.login-register a#register {
+    background-color: #2F4A6D; /* Warna latar belakang tombol Register */
+    color: #fff; /* Warna teks tombol Register */
+}
+
+.login-register a:hover {
+    background-color: #1d2c3e; /* Warna latar belakang saat tombol dihover */
 }
 
 .card {
