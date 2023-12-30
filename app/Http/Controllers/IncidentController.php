@@ -74,42 +74,46 @@ class IncidentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Incident $incident):View
+    public function show(string $id): View
     {
-        return view("incidents.edit");
+        $incident = Incident::all();
+        return view("incidents.show", ['incident' => $incident]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        return view("incidents.show");
+        $incident = Incident::findOrFail($id);
+        return view("incidents.edit", compact('incident'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Incident $incident): RedirectResponse
     {
         $request->validate([
             'incident' => 'required|min:5',
             'probability' => 'required',
             'risk_impact' => 'required',
             'incident_desc' => 'required|min:5'
-         ]);
+        ]);
+        
+        $inicdent = Incident::all();
+        $incident->update($request->all());
 
-         $incident->update($request->all());
-
-         return redirect()->route('incidents.index')
-                        ->with('success', 'Incident updated successfuly.');
+        return redirect()->route('incidents.index')
+                    ->with('success', 'Incident updated successfuly.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
+    public function destroy(string $id): RedirectResponse
+    {   
+        $incident = Incident::all();
         $incident->delete();
 
         return redirect()->route('incidents.index')

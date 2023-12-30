@@ -40,10 +40,10 @@
                     <td>
                         <form action="{{ route('incidents.destroy', $incident->id)}}" method="POST">
                             <a class="btn btn-success" href="{{ route('incidents.show', $incident->id) }}">Show</a>
-                            <a class="btn btn-primary"href="{{ route('incidents.edit', $incident->id) }}">Edit</a>
+                            <a class="btn btn-danger" href="{{ route('incidents.edit', $incident->id) }}">Edit</a>
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-primary" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
