@@ -37,6 +37,15 @@
                     <td>{{ $incident->priority }}</td>
                     <td>{{ $incident->created_at }}</td>
                     <td>{{ $incident->updated_at }}</td>
+                    <td>
+                        <form action="{{ route('incidents.destroy', $incident->id)}}" method="POST">
+                            <a class="btn btn-success" href="{{ route('incidents.show', $incident->id) }}">Show</a>
+                            <a class="btn btn-primary"href="{{ route('incidents.edit', $incident->id) }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

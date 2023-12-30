@@ -74,9 +74,9 @@ class IncidentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Incident $incident):View
     {
-        //
+        return view("incidents.edit");
     }
 
     /**
@@ -84,7 +84,7 @@ class IncidentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view("incidents.show");
     }
 
     /**
@@ -92,7 +92,17 @@ class IncidentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'incident' => 'required|min:5',
+            'probability' => 'required',
+            'risk_impact' => 'required',
+            'incident_desc' => 'required|min:5'
+         ]);
+
+         $incident->update($request->all());
+
+         return redirect()->route('incidents.index')
+                        ->with('success', 'Incident updated successfuly.');
     }
 
     /**
@@ -100,6 +110,9 @@ class IncidentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $incident->delete();
+
+        return redirect()->route('incidents.index')
+                        ->with('success', 'Incident deleted successfuly.');
     }
 }
