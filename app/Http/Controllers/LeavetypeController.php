@@ -83,6 +83,7 @@ class LeaveTypeController extends Controller
 
 
     public function show(LeaveType $leaveType){
+        return view('leaveTypes.show', compact('leaveType'));
     }
 
     public function edit(LeaveType $leaveType)
@@ -95,11 +96,15 @@ class LeaveTypeController extends Controller
     }
 
     public function destroy(LeaveType $leaveType){
-
+        $leaveType->delete();
+        return redirect()->route('leaveTypes.index')->with('success','Leave Type has been deleted');
     }
 
     public function approve(LeaveType $leaveType)
     {
-
+        $leaveType->status = 'approved';
+        $leaveType->save();
+        
+        return redirect()->route('leaveTypes.index');
     }
 }

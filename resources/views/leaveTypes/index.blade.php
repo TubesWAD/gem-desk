@@ -20,25 +20,34 @@
         </thead>
 
         <tbody>
+        @php
+            $number = 1;   
+        @endphp
         @forelse ($leaveTypes as $index => $leaveType)
             <tr>
-                <th scope="row">{{ 1 }}</th>
+                <th scope="row">{{ $number ++ }}</th>
                 <td>{{ $leaveType->name}}</td>
                 <td>{{ $leaveType->max_duration}}</td>
                 <td> {{ $leaveType->status }} </td>
                 <td>
-                    <form action="" method="post">
+                    <form action="{{route('leaveTypes.approve', $leaveType)}}" method="post">
                         @csrf
                         @method('PATCH')
-                        <a type="submit" class="btn btn-success" href="">
+                        <button type="submit" class="btn btn-submit me-1" href="{{ route('leaveTypes.index') }}">
                             Approve
-                        </a>
+                        </button>
                     </form>
-                    <a href="" class="btn btn-info"style="margin-right: 2%">Show</a>
-                    <a class="btn btn-danger me-1" href="">Delete</a>
-                    <form id="" action="" method="post">
+                    <a href="{{ route('leaveTypes.show', $leaveType->id) }}" class="btn btn-info"
+                        style="margin-right: 2%">Show</a>
+                    <a class="btn btn-danger me-1" href="#" onclick="
+                            event.preventDefault();
+                            if(confirm('Do you want to delete this ?')){
+                                document.getElementById('delete-row-{{ $leaveType->id }}').submit();}">Delete</a>
+                        <form id="delete-row-{{$leaveType->id}}" action="{{route('leaveTypes.destroy', $leaveType->id)}}"
+                            method="post">
+                        <input type="hidden" name="_method" value="DELETE">
                         @csrf
-                    </form>
+                        </form>
                 </td>
             </tr>
         @empty
