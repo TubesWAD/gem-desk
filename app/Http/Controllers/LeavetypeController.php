@@ -2,44 +2,83 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Leavetype;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
+use Illuminate\Http\Response;
+use App\Models\LeaveType;
 
-
-class LeavetypeController extends Controller
+class LeaveTypeController extends Controller
 {
-    public function create(){
-        return view('LeavesType/create');
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $data = LeaveType::all();
+        return view('leavesTypes.index', compact('data'));
     }
 
-    public function view(){
-        $data = Leavetype::all();
-        return view('LeavesType/view', compact('data'));
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('leavesTypes.create');
     }
 
-    public function insertdata(Request $request){
-        //dd($request->all());
-        Leavetype::create($request->all());
-        return redirect()->route('view')->with('success','Leave Type added successfully');
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'nameLeavetype' => 'required',
+            'description' => 'required',
+            'maxDuration' => 'required',
+            'status' => 'required'
+        ]);
+        
+        LeaveType::create($request->all());
+         
+        return redirect()->route('leavesTypes.index');
     }
 
-
-    public function showdata($id){
-        $data = Leavetype::find($id);
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $data = LeaveType::find($id);
         //dd($data);
-        return view('LeavesType/update', compact('data'));
+        return view('leavesTypes.edit', compact('data'));
     }
 
-    public function update(Request $request, $id){
-        $data = Leavetype::find($id);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $data = LeaveType::find($id);
+        return view('leavesTypes.edit', compact('data'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $data = LeaveType::find($id);
         $data->update($request->all());
-        return redirect()->route('view')->with('success','Leave Type updated successfully');
+        return redirect()->route('leavesTypes.index');
+   
     }
 
-    public function delete($id){
-        $data = Leavetype::find($id);
-        $data->delete();
-        return redirect()->route('view')->with('success','Leave Type has been deleted');
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(LeaveType $leave_types): RedirectResponse
+    {
+        $leave_types->delete();
+        return redirect(route('leavesTypes.index'));
     }
 }

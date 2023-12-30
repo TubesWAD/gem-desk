@@ -1,13 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< Updated upstream
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SolutionController;
+use App\Http\Controllers\LeaveTypeController;
 
-=======
-use App\Http\Controllers\LeavetypeController;
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,17 +16,11 @@ use App\Http\Controllers\LeavetypeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/leavesTypes', LeaveTypeController::class);
 
-Route::get('/create',[LeavetypeController::class, 'create'])->name('create');
-Route::get('/insertdata',[LeavetypeController::class, 'insertdata'])->name('insertdata');
+Route::resource('/tickets',TicketController::class);
+Route::post('/tickets/{id}/createMessage', [TicketController::class, 'createMessage'])->name('tickets.createMessage');
 
-Route::get('/view',[LeavetypeController::class, 'view'])->name('view');
-
-Route::get('/showdata/{id}',[LeavetypeController::class, 'showdata'])->name('showdata');
-Route::post('/update/{id}',[LeavetypeController::class, 'update'])->name('update');
-
-Route::get('/delete/{id}',[LeavetypeController::class, 'delete'])->name('delete');
+Route::patch('/tickets/{ticket}/close', [TicketController::class, 'close'])->name('tickets.close');
+Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->name('tickets.reopen');
 

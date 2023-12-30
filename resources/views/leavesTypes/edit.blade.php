@@ -4,7 +4,7 @@
     
   <div class="container mt-5">
     <h2>Change Leave Type</h2>
-    <form action="/update/{{$data->id}}" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST">
       @csrf
       <div class="mb-3">
         <label for="namaLeaveTypeUpdate">Name Leaves Type</label>

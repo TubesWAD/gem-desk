@@ -4,7 +4,7 @@
     
   <div class="container mt-5">
     <h2>Add New Leave Type</h2>
-    <form action="/insertdata" method="HEAD">
+    <form action="{{ route('leavesTypes.store')}}" method="POST">
       @csrf
       <div class="mb-3">
         <label for="namaLeaveType">Name Leaves Type</label>
@@ -22,17 +22,16 @@
       </div>
 
       <div class="mb-3">
-        <label for="durationLeaveType">Maximum Duration</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <label for="durationLeaveType">Status</label>
+        <select class="form-select" name="status" aria-label="Default select example">
+          <option selected>Status</option>
+          <option value="approved">Approve</option>
+          <option value="unapproved">Unapprove</option>
+        </select> 
       </div>
 
       <button type="submit" class="btn btn-primary">Add</button>
-      <a href="/view" class="btn btn-secondary">Cancel</a>
+      <a href="{{route('leavesTypes.index')}}" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
 
