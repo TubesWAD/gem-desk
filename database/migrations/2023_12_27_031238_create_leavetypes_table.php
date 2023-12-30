@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('max_duration');
-            $table->enum('status',['approved','unapproved',]);
+            $table->enum('status',['approved','unapproved',])->default('unapproved');
             $table->timestamps();
         });
     }
