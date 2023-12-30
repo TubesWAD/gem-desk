@@ -2,11 +2,28 @@
 
 namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Organization extends Model
+class Organization extends Model 
 {
-    //use HasFactory;
-    protected $table = 'organizations';
+    use HasFactory;
+
+    //protected $table = 'organizations';
+
+    protected $fillable =[
+        'organization_name',
+        'description',
+        'industry_category',
+        'address',
+        'city',
+        'postalcode',
+        'state',
+        'country',
+        'email',
+        'phone_no',
+        'fax_no',
+        'web_url',
+        'logo'
+    ];
 }

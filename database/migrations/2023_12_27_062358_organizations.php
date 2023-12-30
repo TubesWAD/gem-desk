@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('organizations', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table){
             $table->id();
             $table->string('organization_name');
             $table->text('description');
@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('phone_no');
             $table->string('fax_no');
             $table->string('web_url');
-            $table->string('logo');
             $table->timestamps();
         });
     }

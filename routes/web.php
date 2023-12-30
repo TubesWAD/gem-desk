@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\SolutionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,31 +32,31 @@ Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->n
  */
 //Route::get('/organizations','OrganizationController@index');
 
-//Route::resource('/organizations', OrganizationController::class);
-Route::get('/organizations/{id}/createMessage', [OrganizationController::class, 'createMessage'])->name('organizations.createMessage');
+Route::resource('organizations', OrganizationController::class);
+//Route::get('/organizations/{id}/createMessage', [OrganizationController::class, 'createMessage'])->name('organizations.createMessage');
 
- Route::get('/organization/show', function () {
-     return view('organizations.show');
- });
-
- Route::get('/organizations', function () {
-     return view('organizations.index');
- });
-
- Route::get('/organization/create', function () {
-     return view('organizations.create');
- });
-
-// Route::get('/organization/edit', function () {
-//     return view('organizations.edit');
+// Route::get('/organizations/show', function () {
+//   return view('organizations.show');
 // });
 
-Route::resource('/departments', OrganizationController::class);
+// Route::get('/organizations', function () {
+//   return view('organizations.index');
+//  });
 
-Route::get('/department', function () {
-    return view('departments.index');
-});
+// Route::get('/organizations/create', function () {
+//   return view('organizations.create');
+//  });
 
-Route::get('/department/create', function () {
-    return view('departments.create');
-});
+// Route::get('/organizations/edit', function () {
+//   return view('organizations.edit');
+//  });
+
+//Route::resource('/departments', OrganizationController::class);
+
+//Route::get('/department', function () {
+ //   return view('departments.index');
+//});
+
+//Route::get('/department/create', function () {
+ //   return view('departments.create');
+//});

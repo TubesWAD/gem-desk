@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-  <h2>PT Indofood Sukses Makmur</h2><br>
+  <h2>{{ $organization->organization_name }}</h2><br>
+
+  <div class="d-grid gap-2 d-md-block">
+    <a class="btn btn-primary" href="{{ route('organizations.index') }}" role="button">Back</a>
+  </div>
+
   <div class="card">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
@@ -16,29 +21,26 @@
                   
     <div class="card-body">
       <h3 class="card-title">Description</h3>
-      <p>
-        PT Indofood Sukses Makmur atau lebih dikenal dengan nama Indofood merupakan produsen berbagai 
-        jenis makanan dan minuman yang bermarkas di Jakarta, Indonesia. Perusahaan ini mengekspor bahan 
-        makanannya hingga Australia, Asia, dan Eropa. Dalam beberapa dekade ini Indofood telah bertransformasi 
-        menjadi sebuah perusahaan total food solutions dengan kegiatan operasional yang mencakup seluruh tahapan 
-        proses produksi makanan, mulai dari produksi dan pengolahan bahan baku hingga menjadi produk akhir yang 
-        tersedia di rak para pedagang eceran.
-      </p><br>
+      <p>{{ $organization->description }}</p><br>
+
+      <h3 class="card-title">Industry Category</h3>
+      <p>{{ $organization->industry_category }}</p><br>
       
       <h3 class="card-title">Address</h3>
-      <p>Sudirman Plaza, Indofood Tower Lt. 23, Jl. Jend. Sudirman Kav. 76-78, Jakarta 12910</p><br>
+      <p>{{ $organization->address }}</p><br>
 
       <h3 class="card-title">State</h3>
-      <p>Jakarta</p><br>
+      <p>{{ $organization->state }}</p><br>
 
       <h3 class="card-title">Country</h3>
-      <p>Indonesia</p><br>
+      <p>{{ $organization->country }}</p><br>
                     
       <h3 class="card-title">Contact Information</h3>
-      <p>-</p><br>
+      <p>{{ $organization->email }}</p><br>
       
+      @csrf
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="#" class="btn btn-primary">Edit Detail</a>
+        <a href="{{ route('organizations.edit',$organization->id) }}" class="btn btn-primary">Edit Detail</a>
       </div>
     </div>
   </div>
