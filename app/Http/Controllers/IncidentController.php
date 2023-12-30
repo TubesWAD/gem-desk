@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Incident;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-//use App\Http\Controllers\RedirectResponse;
 use Illuminate\View\View;
 
 
@@ -101,7 +100,21 @@ class IncidentController extends Controller
             'incident_desc' => 'required|min:5'
         ]);
         
-        $inicdent = Incident::all();
+
+        $probabilityMap = ['Low' => 1, 'Medium' => 2, 'High' => 3];
+        $probability = $probabilityMap[$request->probability] ?? 0;
+        
+        $impactMap = ['Low' => 1, 'Medium' => 2, 'High' => 3];
+        $impact = $impactMap[$request->risk_impact] ?? 0;
+
+        $priority = $probability + $impact;
+        if($priority >= 0 and $priority <= 2){
+            $incident->priority = "Low ";
+        }elseif($priority >= 3 and $priority <= 4){
+            $incident->priority = "Medium";
+        }elseif($priority >= 5 and $priority <= 6){
+            $incident->priority = "High";
+        }
         $incident->update($request->all());
 
         return redirect()->route('incidents.index')

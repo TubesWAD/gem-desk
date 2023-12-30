@@ -14,6 +14,7 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Id</th>
                     <th>Incident</th>
                     <th>Service Impacted</th>
@@ -27,14 +28,18 @@
             </thead>
             <tbody>
                 @foreach($data as $incident)
+                @php
+                    $number = 1;
+                @endphp
                 <tr>
+                    <td>{{ $number++}}</td>
                     <td>{{ $incident->id }}</td>
                     <td>{{ $incident->incident }}</td>
                     <td>{{ $incident->service }}</td>
                     <td>{{ $incident->asset }}</td>
-                    <td>{{ $incident->probability }}</td>
+                    <td>{{ $incident->probability }}</td>   
                     <td>{{ $incident->risk_impact }}</td>
-                    <td>{{ $incident->priority }}</td>
+                    <td class="{{ getPriorityClass($incident->priority) }}">{{ $incident->priority }}</td>
                     <td>{{ $incident->created_at }}</td>
                     <td>{{ $incident->updated_at }}</td>
                     <td>
@@ -53,3 +58,18 @@
     </div>
 
 @endsection
+
+@php
+function getPriorityClass($priority) {
+    switch ($priority) {
+        case 'Low':
+            return 'table-success'; // Green background
+        case 'Medium':
+            return 'table-warning'; // Yellow background
+        case 'High':
+            return 'table-danger'; // Red background
+        default:
+            return '';
+    }
+}
+@endphp
