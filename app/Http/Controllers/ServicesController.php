@@ -25,6 +25,7 @@ class ServicesController extends Controller
             $loop = 0;
             if (count($data) > 0) {
                 foreach ($data as $service) {
+                    
                     echo '
                         <tr>
                             <td>' . ($loop + 1) . '</td>

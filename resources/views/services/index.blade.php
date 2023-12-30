@@ -43,6 +43,7 @@
         </thead>
         <tbody>
             @foreach ($services as $index => $service)
+            
             <tr>
                 <td>{{ $index + $services->firstItem() }}</td>
                 <td>{{ $service->name }}</td>
@@ -62,8 +63,14 @@
                 </td>
             </tr>
             @endforeach
+            
         </tbody>
+
   </table>
+  <div>
+    {{ $services->links() }}
+  </div>
+
       
 </div>
 @endsection
