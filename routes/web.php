@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 
 
@@ -26,12 +26,12 @@ Route::middleware('auth')->group(function() {
     
     // });
 
-    Route::resource('userManagements', UserManagementController::class);
+    Route::resource('/userManagements', UserController::class);
     
     // Route::get('/create', [UserManagementController::class, 'create'])->name('create');
     // Route::post('/insert', [UserManagementController::class, 'insert'])->name('insert');
 
-    Route::get('/view', 'UserController@view')->name('view');
+    // Route::get('/view', 'UserController@view')->name('view');
 
     // Route::get('/show/{id}', [UserManagementController::class, 'show'])->name('show');
     // Route::get('/edit{id}', [UserManagementController::class, 'update'])->name('edit');

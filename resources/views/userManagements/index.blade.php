@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+  <div class="container mt-5">
     <h2>User Management</h2>
     
     <a type="submit" class="btn btn-primary" href="{{route('userManagements.create')}}">Add User</a>
@@ -11,6 +11,15 @@
       {{$message}}
     </div>
     @endif
+
+    <form action="{{ route('userManagements.index') }}" method="GET">
+      <div class="d-flex justify-content-end">
+          <div class="input-group mb-3  w-25">
+              <input type="text" class="form-control" placeholder="Search..." name="q" id="search" autocomplete="off">
+          </div>
+      </div>
+    </form>
+
     <table class="table table-striped">
         <thead>
           <tr>
@@ -22,17 +31,14 @@
             <th scope="col">Department Name</th>
             <th scope="col">Roles</th>
             <th scope="col">Mobile</th>
-            <th scope="col">Description</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
+
         <tbody>
-          @php
-            $number = 1;
-          @endphp
-          @foreach ($data as $row)
+          @foreach ($users as $index => $user)
           <tr>
-            <th scope="row">{{$number++}}</th>
+            <th scope="row">{{$index + $users->firstItem()}}</th>
             <td>{{$row -> name}}</td>
             <td>{{$row -> username}}</td>
             <td>{{$row -> email}}</td>
@@ -40,16 +46,67 @@
             <td>{{$row -> department_name}}</td>
             <td>{{$row -> roles}}</td>
             <td>{{$row -> mobile}}</td>
-            <td>{{$row -> description}}</td>
-            <td class="d-flex">
-              <button type="submit" class="btn btn-info mr-2" href="/show/{{$row -> id}}">Show</button>
-              <button type="button" class="btn btn-warning" href="/edit/{{$row -> id}}">Edit</button>
-              <button type="button" class="btn btn-danger ml-2" href="/delete/{{$row -> id}}">Delete</button>
+            <td class="d-flex justify-content-center">
+              <a class="btn btn-success me-1" href="{{ route('userManagements.show', $user->id) }}">Show</a>
+              <a class="btn btn-primary me-1" href="{{ route('userManagements.edit', $user->id) }}">Edit</a>
+              <a class="btn btn-danger me-1" href="#" onclick="event.preventDefault();
+                  if(confirm('Do you want to delete this?')){
+                      document.getElementById('delete-row-{{ $user->id }}').submit();
+                  }">Delete</a>
+              <form id="delete-row-{{$user->id}}" action="{{route('userManagements.destroy', $user->id)}}"
+                    method="post">
+                  <input type="hidden" name="_method" value="DELETE">
+                  @csrf
+              </form>
             </td>
           </tr>
           @endforeach
         </tbody>
-      </table>
-</div>
+    </table>
+  </div>
 
 @endsection
+@push('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+$('#search').on('keyup',function() {
+  var query = $(this).val();
+  if(query !== ''){
+      $.ajax({
+          url:"{{ route('userManagements.index') }}",
+          type:"GET",
+          data:{'query':query},
+          success:function (data) {
+              $('tbody').empty().html(data);
+          }
+      })
+  }
+  else{
+      $('tbody').empty();
+      @foreach($users as $index => $user)
+      $('tbody').append(`
+          <tr>
+              <td>{{ $loop->index + 1 }}</td>
+              <td>{{ $user->name }}</td>
+              <td>{{ $user->username }}</td>
+              <td>{{ $user->email }}</td>
+              <td>{{ $user->employee_id }}</td>
+              <td>{{ $user->department_name }}</td>
+              <td>{{ $user->roles }}</td>
+              <td>{{ $user->mobile }}</td>
+              <td class="d-flex justify-content-center">
+                  <a class="btn btn-success me-1" href="{{ route('userManagements.show', $user->id) }}">Show</a>
+                  <a class="btn btn-primary me-1" href="{{ route('userManagements.edit', $user->id) }}">Edit</a>
+                  <form action="{{ route('userManagements.destroy', $user->id) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger me-1">Delete</button>
+                  </form>
+              </td>
+          </tr>`
+      );
+      @endforeach
+  }
+});
+</script>
+@endpush
