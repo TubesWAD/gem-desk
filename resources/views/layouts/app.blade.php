@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
 
 </head>
@@ -48,17 +49,19 @@
                 <span class="material-symbols-outlined">emergency_home</span>
                 <h3>Insiden Management</h3>
             </a>
-            <a style="text-decoration: none" href="{{route('tickets.index')}}" class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
+            <a style="text-decoration: none" href="{{route('tickets.index')}}"
+               class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">confirmation_number</span>
                 <h3>Ticket Management</h3>
             </a>
-{{--            <form action="{{route('logout')}}" method="POST">--}}
-{{--                @csrf--}}
-{{--                <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">--}}
-{{--                    <span class="material-symbols-outlined">logout</span>--}}
-{{--                    <h3>Logout</h3>--}}
-{{--                </a>--}}
-{{--            </form> --}}
+            {{--            <form action="{{route('logout')}}" method="POST">--}}
+            {{--                @csrf--}}
+            {{--                <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">--}}
+            {{--                    <span class="material-symbols-outlined">logout</span>--}}
+            {{--                    <h3>Logout</h3>--}}
+            {{--                </a>--}}
+            {{--            </form> --}}
+
 
         </div>
     </aside>
@@ -89,19 +92,21 @@
         <div class="container-fitur">
             @yield('content')
         </div>
-
-
     </main>
     <!-- ============================END OF MAIN================== -->
 
 </div>
+>>>>>>> staging
 @stack('script')
 <script>
-    $("#alert").fadeTo(1500,300).slideUp(300, function (){
+    $("#alert").fadeTo(1500, 300).slideUp(300, function () {
         $('#alert').slideUp(300);
     });
 </script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>
+
+
+
 
