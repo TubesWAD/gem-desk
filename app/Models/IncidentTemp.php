@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Solution extends Model
+class IncidentTemp extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-      'ticket_id', 'messages'
+      'incident','service_id', 'probability', 'risk_quadrant', 'risk_level'
     ];
-    public function ticket() : BelongsTo{
-        return $this->belongsTo(Ticket::class, 'ticket_id');
-    }
+
+//    public function service() : BelongsTo
+//    {
+//        return $this->belongsTo(Service::class);
+//    }
 }

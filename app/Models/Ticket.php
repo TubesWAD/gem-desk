@@ -16,6 +16,6 @@ class Ticket extends Model
 
     public function solutions() : HasMany
     {
-        return $this->hasMany(Solution::class);
+        return $this->hasMany(Solution::class, 'ticket_id');
     }
 }
