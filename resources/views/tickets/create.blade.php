@@ -46,7 +46,7 @@
                     <option>Kebakaran</option>
                     <option>Internet Mati</option>
                 </select>
-                <a class="btn btn-outline-warning rounded" href="#" role="button">No Types</a>
+                <a class="btn btn-outline-warning rounded" href="{{route('incidentTemps.create')}}" role="button">No Types</a>
                 <div id="ticketTypeHelp" class="input-group form-text">
                     If there's no type, you can request a new type so admin can added it.
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTicket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Solution;
 use App\Models\Ticket;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -81,7 +82,7 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request): RedirectResponse
     {
-        $ticket = new Ticket;
+        $ticket = new Ticket();
         $ticket->title = $request->title;
         $ticket->description = $request->description;
         if ($request->hasFile('file')){
@@ -103,9 +104,20 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket): View
+    public function show(Ticket $ticket)
     {
+        $ticket = Ticket::with('solutions')->find($ticket->id);
         return view('tickets.show', compact('ticket'));
+    }
+
+    public function createMessage(Request $request, $id){
+
+        $solution = new Solution();
+        $solution->ticket_id = $id;
+        $solution->messages = $request->message;
+        $solution->save();
+
+        return redirect()->route('tickets.show', $id);
     }
 
     /**

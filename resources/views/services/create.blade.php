@@ -9,7 +9,6 @@
                 <h2 style="padding-bottom: 10px; margin-bottom: 10px;">Add New Service</h2>
             </div>
         </div>
-           
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -24,7 +23,7 @@
         <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-            
+
             <div class="col-md-6">
                 <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
                     <div class="form-group">
@@ -82,15 +81,15 @@
                         <input type="text" name="cost" class="form-control" placeholder="cost">
                     </div>
                 </div>
-            
+
             </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="margin-top: 20px;">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
-            
 
-           
+
+
         </form>
     </div>
 
