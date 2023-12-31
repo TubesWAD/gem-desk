@@ -109,8 +109,8 @@
                 <section>
                     <h2>Contact Us</h2>
                     <p>Have questions or need assistance? Feel free to reach out to us.</p>
-                    <p>Email: support@servicedesk.com</p>
-                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: support@gemdesk.com</p>
+                    <p>Phone: (+62) 85695 470495</p>
                 </section>
             </div>
         </div>
