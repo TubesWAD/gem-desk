@@ -45,9 +45,9 @@
                 <span class="material-symbols-outlined">support_agent</span>
                 <h3>Service Catalog</h3>
             </a>
-            <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('incidents.index')}}" class="{{ request()->routeIs('incidents**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">emergency_home</span>
-                <h3>Insiden Management</h3>
+                <h3>Incident Management</h3>
             </a>
             <a style="text-decoration: none" href="{{route('tickets.index')}}"
                class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
