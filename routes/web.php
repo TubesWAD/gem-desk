@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController;
@@ -72,6 +73,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/editproducts/{id}', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/updateproducts/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::get('/deleteproducts/{id}', [ProductController::class, 'delete'])->name('products.delete');
+  
+  
+  Route::resource('services', ServicesController::class);
 
 });
+
 
