@@ -3,12 +3,13 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 <<<<<<< HEAD
 //use Illuminate\Support\Facades\schema;
 =======
 use Illuminate\Support\Facades\Blade;
 >>>>>>> origin
-use Illuminate\Pagination\Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
