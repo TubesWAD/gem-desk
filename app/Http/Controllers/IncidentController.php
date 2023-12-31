@@ -75,7 +75,7 @@ class IncidentController extends Controller
      */
     public function show(string $id): View
     {
-        $incident = Incident::all();
+        $incident = Incident::findOrFail($id);
         return view("incidents.show", ['incident' => $incident]);
     }
 
