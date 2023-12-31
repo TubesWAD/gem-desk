@@ -154,3 +154,10 @@ footer {
 footer p {
     color: white;
 }
+
+.custom-card-img {
+    width: 50%; 
+    height: auto; 
+    display: block;
+    margin: auto;
+  }

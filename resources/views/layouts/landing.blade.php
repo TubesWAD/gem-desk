@@ -30,7 +30,65 @@
 
 
     <div class="container mt-4">
-        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 1</h5>
+                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae maiores fugiat cupiditate obcaecati vitae explicabo cum accusamus veniam in voluptate libero dolorum ullam repellat, laboriosam impedit repudiandae quibusdam quia optio!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 2</h5>
+                        <p class="card-text">Description of Card 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 3</h5>
+                        <p class="card-text">Description of Card 3.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 1</h5>
+                        <p class="card-text">Description of Card 1.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 2</h5>
+                        <p class="card-text">Description of Card 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 3</h5>
+                        <p class="card-text">Description of Card 3.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
