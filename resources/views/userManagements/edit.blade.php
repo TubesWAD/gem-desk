@@ -31,9 +31,9 @@
       @role('admin')
       <div class="form-group">
         <label for="roles">Roles</label>
-        <input type="text" class="form-control" id="roles" name="roles" value="{{old('role', $user->role)}}" required>
+        <input type="text" class="form-control" id="roles" name="roles" value="{{old('roles', $user->roles)}}" required>
       </div>
-       @endrole
+      @endrole
 
       <div class="form-group">
         <label for="mobile">Mobile</label>

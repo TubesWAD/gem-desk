@@ -39,13 +39,13 @@
           @foreach ($users as $index => $user)
           <tr>
             <th scope="row">{{$index + $users->firstItem()}}</th>
-            <td>{{$row -> name}}</td>
-            <td>{{$row -> username}}</td>
-            <td>{{$row -> email}}</td>
-            <td>{{$row -> employee_id}}</td>
-            <td>{{$row -> department_name}}</td>
-            <td>{{$row -> roles}}</td>
-            <td>{{$row -> mobile}}</td>
+            <td>{{$user -> name}}</td>
+            <td>{{$user -> username}}</td>
+            <td>{{$user -> email}}</td>
+            <td>{{$user -> employee_id}}</td>
+            <td>{{$user -> department_name}}</td>
+            <td>{{$user -> roles}}</td>
+            <td>{{$user -> mobile}}</td>
             <td class="d-flex justify-content-center">
               <a class="btn btn-success me-1" href="{{ route('userManagements.show', $user->id) }}">Show</a>
               <a class="btn btn-primary me-1" href="{{ route('userManagements.edit', $user->id) }}">Edit</a>

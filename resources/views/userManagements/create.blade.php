@@ -23,8 +23,8 @@
             </div>
 
             <div class="form-group">
-                <label for="nama">Name</label>
-                <input type="text" class="form-control" id="nama" name="nama" required>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
 
             <div class="form-group">
@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label for="department">Department Name</label>
-                <input type="text" class="form-control" id="department" name="department" required>
+                <input type="text" class="form-control" id="department_name" name="department_name" required>
             </div>
 
             <div class="form-group">

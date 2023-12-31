@@ -137,10 +137,14 @@ class UserController extends Controller
 
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
+
         $oldPicture = $user->profile_picture;
-        unlink(storage_path('app/public') . $oldPicture);
+        if ($oldPicture && file_exists(storage_path('app/public/') . $oldPicture)) {
+            unlink(storage_path('app/public/') . $oldPicture);
+        }
         $user->delete();
 
         return redirect()->route('userManagements.index')
