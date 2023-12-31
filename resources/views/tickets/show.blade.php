@@ -27,6 +27,7 @@
     @endif
     <br>
     <link href="{{asset('css/file_upload.css')}}" rel="stylesheet" />
+        <img src="{{ asset('storage/' . $ticket->files)  }}" alt="" width="100px">
         <div class="mb-3">
             <label class="form-label" for="title"><h2>Title</h2></label>
             <input type="text" name="title" id="title" class="form-control" value="{{$ticket->title}}" placeholder="write title here...." aria-describedby="helpId" disabled>
