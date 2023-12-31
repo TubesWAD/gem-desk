@@ -13,12 +13,7 @@
 </head>
 
 <body>
-    <header>
-        <img src="{{asset('img/gem-desk.png')}}" class="card-img-top" alt="gem-desk logo" style="width: 90px; height: auto;">
-        <h1>Gem-Desk</h1>
-        <p>Your One-Stop Solution for IT Support</p>
-    </header>
-
+    
     <nav>
         <a href="#home">Home</a>
         <div class="login-register">
@@ -26,6 +21,13 @@
             <a id="register" href="#register">Register</a>
         </div>
     </nav>
+
+    <header>
+        <img src="{{asset('img/gem-desk.png')}}" class="card-img-top" alt="gem-desk logo" style="width: 90px; height: auto;">
+        <h1>Gem-Desk</h1>
+        <p>Your One-Stop Solution for IT Support</p>
+    </header>
+
 
     <div class="container mt-4">
         

@@ -47,7 +47,7 @@ body {
 }
 
 header {
-    background-color: #2F4A6D;
+    background-color: var(--color-background);
     /* Warna secondary biru tua */
     padding: 20px;
     color: white;
@@ -55,16 +55,16 @@ header {
 }
 
 header h1 {
-    color: #fff;
+    color: #2F4A6D;
 }
 
 header p {
-    color: #fff;
+    color: #2F4A6D;
 }
 
 nav {
     height: 70px; /* Sesuaikan dengan tinggi yang Anda inginkan */
-    background-color: #fff; /* Tambahkan warna latar belakang jika diperlukan */
+    background-color: #2F4A6D; /* Tambahkan warna latar belakang jika diperlukan */
     display: flex;
     align-items: center; /* Pusatkan vertikal kontennya */
     justify-content: space-between; /* Letakkan elemen ke ujung kiri dan ujung kanan */
@@ -73,7 +73,7 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #343a40;
+    color: #fff;
     margin-right: 20px;
     padding: 10px 15px; /* Memberikan padding pada tombol */
     border-radius: 5px; /* Memberikan sudut melengkung pada tombol */
@@ -85,17 +85,17 @@ nav a:hover {
 }
 
 .login-register a {
-    margin-right: 0;
+    margin-right: 20px;
 }
 
 .login-register a#login {
-    background-color: #2F4A6D; /* Warna latar belakang tombol Login */
-    color: #fff; /* Warna teks tombol Login */
+    background-color: #fff; /* Warna latar belakang tombol Login */
+    color: #2F4A6D; /* Warna teks tombol Login */
 }
 
 .login-register a#register {
-    background-color: #2F4A6D; /* Warna latar belakang tombol Register */
-    color: #fff; /* Warna teks tombol Register */
+    background-color: #fff; /* Warna latar belakang tombol Register */
+    color: #2F4A6D; /* Warna teks tombol Register */
 }
 
 .login-register a:hover {
