@@ -45,7 +45,7 @@
         <div class="col-1"></div>
         <div class="col-2">Organization Name</div>
         <div class="col-8">
-          <input type="text" class="form-control form-control-sm" id="orgName" value="{{ $organization->organization_name }}"><br>
+          <input type="text" class="form-control form-control-sm" name="organization_name" value="{{ $organization->organization_name }}"><br>
         </div>
       </div>
 
@@ -53,8 +53,28 @@
         <div class="col-1"></div>
         <div class="col-2">Description</div>
         <div class="col-8">
-          <textarea class="form-control" id="orgDesc" rows="3">{{ $organization->description }}</textarea>
+          <textarea class="form-control form-control-sm" name="description" rows="3">{{ $organization->description }}</textarea><br>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">Industry Category</div>
+        <div class="col-8">
+          <select class="form-select form-select-sm" name="industry_category" aria-label=".form-select-sm example" value="{{ $organization->industry_category }}">
+            <option selected>Open this select menu</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Consulting & Professional Services">Consulting & Professional Services</option>
+            <option value="Electrical Equipment">Electrical Equipment</option>
+            <option value="Food & Beverage">Food & Beverage</option>
+            <option value="Health">Health</option>
+            <option value="Information & Communication Technology">Information & Communication Technology</option>
+            <option value="Fashion & Textiles">Fashion & Textiles</option>
+            <option value="Media & Entertainment">Media & Entertainment</option>
+            <option value="Manufacturing">Manufacturing</option>
+            <option value="Transportation & Logistics">Transportation & Logistics</option>
+            <option value="Other">Others...</option>
+          </select><br>
       </div>
     </div>
     <hr>
@@ -65,7 +85,7 @@
         <div class="col-1"></div>
         <div class="col-2">Address</div>
         <div class="col-8">
-          <textarea class="form-control" id="orgAddress" rows="3">{{ $organization->address }}</textarea><br>
+          <textarea class="form-control form-control-sm" name="address" rows="3">{{ $organization->address }}</textarea><br>
         </div>
       </div>
 
@@ -73,7 +93,7 @@
         <div class="col-1"></div>
         <div class="col-2">City</div>
         <div class="col-8">
-          <input type="text" class="form-control form-control-sm" id="orgCity" value="{{ $organization->city }}"><br>
+          <input type="text" class="form-control form-control-sm" name="city" value="{{ $organization->city }}"><br>
         </div>
       </div>
 
@@ -81,7 +101,7 @@
         <div class="col-1"></div>
         <div class="col-2">Postal Code</div>
         <div class="col-8">
-          <input type="text" class="form-control form-control-sm" id="orgPostcode" value="{{ $organization->postal_code }}"><br>
+          <input type="text" class="form-control form-control-sm" name="postal_code" value="{{ $organization->postal_code }}"><br>
         </div>
       </div>
 
@@ -89,7 +109,7 @@
         <div class="col-1"></div>
         <div class="col-2">State</div>
         <div class="col-8">
-          <input type="text" class="form-control form-control-sm" id="orgState" value="{{ $organization->state }}"><br>
+          <input type="text" class="form-control form-control-sm" name="state" value="{{ $organization->state }}"><br>
         </div>
       </div>
 
@@ -97,7 +117,7 @@
         <div class="col-1"></div>
         <div class="col-2">Country</div>
         <div class="col-8">
-          <input type="text" class="form-control form-control-sm" id="orgCountry" value="{{ $organization->country }}">
+          <input type="text" class="form-control form-control-sm" name="country" value="{{ $organization->country }}">
         </div>
       </div>
     </div>
@@ -109,7 +129,7 @@
         <div class="col-1"></div>
         <div class="col-2">Email</div>
         <div class="col-8">
-          <input type="email" class="form-control form-control-sm" id="orgEmail" value="{{ $organization->email }}"><br>
+          <input type="email" class="form-control form-control-sm" name="email" value="{{ $organization->email }}"><br>
         </div>
       </div>
 
@@ -117,7 +137,7 @@
         <div class="col-1"></div>
         <div class="col-2">Phone No.</div>
         <div class="col-8">
-          <input type="tel" class="form-control form-control-sm" id="orgPhone" value="{{ $organization->phone_no }}"><br>
+          <input type="tel" class="form-control form-control-sm" name="phone_no" value="{{ $organization->phone_no }}"><br>
         </div>
       </div>
 
@@ -125,7 +145,7 @@
         <div class="col-1"></div>
         <div class="col-2">Fax No.</div>
         <div class="col-8">
-          <input type="tel" class="form-control form-control-sm" id="orgFax" value="{{ $organization->fax_no }}"><br>
+          <input type="tel" class="form-control form-control-sm" name="fax_no" value="{{ $organization->fax_no }}"><br>
         </div>
       </div>
 
@@ -133,22 +153,13 @@
         <div class="col-1"></div>
         <div class="col-2">Web URL</div>
         <div class="col-8">
-          <input type="url" class="form-control form-control-sm" id="orgWeb" value="{{ $organization->web_url }}">
+          <input type="url" class="form-control form-control-sm" name="web_url" value="{{ $organization->web_url }}">
         </div>
       </div>
-
-      <!-- div class="row">
-        <div class="col-1"></div>
-        <div class="col-2">Company Logo</div>
-        <div class="col-8">
-          <input type="file" class="form-control-file" id="image" name="image" accept="image/*" value="{{ $organization->logo }}">
-        </div>
-      </div -->
       <br>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="btn btn-primary me-md-2" type="submit">Save</button>
-        <!--button class="btn btn-outline-secondary" type="reset">Reset</button -->
       </div>
     </div>
 </form>

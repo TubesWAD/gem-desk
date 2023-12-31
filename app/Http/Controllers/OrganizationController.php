@@ -63,27 +63,6 @@ class OrganizationController extends Controller
 
         Organization::create($request->all());
 
-        //$organization = new Organization;
-        // $organization->organization_name = $request->organization_name;
-        // $organization->description = $request->description;
-        // $organization->industry_category = $request->industry_category;
-        // $organization->address = $request->address;
-        // $organization->city = $request->city;
-        // $organization->postal_code = $request->postalcode;
-        // $organization->state = $request->state;
-        // $organization->country = $request->country;
-        // $organization->email = $request->email;
-        // $organization->phone_no = $request->phone_no;
-        // $organization->fax_no = $request->phone_no;
-        // $organization->web_url = $request->web_url;
-        // if ($request->hasFile('file')){
-        //     $pathFile = $request->file('file')->store('logo', 'public');
-        //     $organization->files = $pathFile;
-        // }else{
-        //     $organization->files = '';
-        // }
-
-        // $organization->save($request->validated());
         return redirect()->route('organizations.index')
                         ->with('success','Organization created successfully!');
     }
@@ -126,26 +105,6 @@ class OrganizationController extends Controller
 
         $organization->update($request->all());
         
-        // $organization->organization_name = $request->organization_name;
-        // $organization->description = $request->description;
-        // $organization->industry_category = $request->industry_category;
-        // $organization->address = $request->address;
-        // $organization->city = $request->city;
-        // $organization->postal_code = $request->postalcode;
-        // $organization->state = $request->state;
-        // $organization->country = $request->country;
-        // $organization->email = $request->email;
-        // $organization->phone_no = $request->phone_no;
-        // $organization->fax_no = $request->phone_no;
-        // $organization->web_url = $request->web_url;
-        // if ($request->hasFile('file')){
-        //     $pathFile = $request->file('file')->store('logo', 'public');
-        //     $organization->files = $pathFile;
-        // }else{
-        //     $organization->files = '';
-        // }
-        
-        // $organization->update($request->validated());
         return redirect()->route('organizations.index')
                         ->with('success','Organization updated successfully!');
     }
@@ -155,8 +114,6 @@ class OrganizationController extends Controller
      */
     public function destroy(Organization $organization)
     {
-        // $oldFile = $organization->files;
-        // unlink(storage_path('app/public/') . $oldFile);
         $organization->delete();
 
         return redirect()->route('organizations.index')

@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-  <h2>{{ $organization->organization_name }}</h2><br>
+  <h2>{{ $organization->organization_name }}</h2>
 
   <div class="d-grid gap-2 d-md-block">
     <a class="btn btn-primary" href="{{ route('organizations.index') }}" role="button">Back</a>
   </div>
+  <br>
 
   <div class="card">
     <div class="card-header">
@@ -27,7 +28,7 @@
       <p>{{ $organization->industry_category }}</p><br>
       
       <h3 class="card-title">Address</h3>
-      <p>{{ $organization->address }}</p><br>
+      <p>{{ $organization->address }}, {{ $organization->city }}, {{ $organization->postal_code }}</p><br>
 
       <h3 class="card-title">State</h3>
       <p>{{ $organization->state }}</p><br>

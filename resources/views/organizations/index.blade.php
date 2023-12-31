@@ -35,14 +35,6 @@
   </div><br>
   @endif
 
-  <!-- form action="{{ route('organizations.index') }}" method="GET">
-    <div class="d-flex justify-content-end">
-        <div class="input-group mb-3  w-25">
-          <input type="text" class="form-control form-control-sm" placeholder="Search..." name="q" id="search" autocomplete="off">
-        </div>
-    </div>
-  </form-->
-
   <div>
     <table class="table table-striped table-hover">
       <thead class="table-light">
@@ -56,7 +48,6 @@
         </tr>
       </thead>
       
-      <tbody>
       @foreach ($organizations as $organization)
         <tr>
           <th scope="row">{{ ++$i }}</th>
@@ -68,15 +59,12 @@
             <form action="{{ route('organizations.destroy',$organization->id) }}" method="POST">
               <a class="btn btn-success btn-sm" href="{{ route ('organizations.show',$organization->id) }}" role="button">Detail</a>
               <a class="btn btn-warning btn-sm" href="{{ route ('organizations.edit',$organization->id) }}" role="button">Edit</a>
-              
               @csrf
               @method ('DELETE')
-              <!-- a class="btn btn-danger btn-sm" href="{{ route ('organizations.destroy',$organization -> id) }}" method="POST" role="button">Delete</a-->
               <button type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
           </td>
         </tr>
-      </tbody>
       @endforeach
     </table>
   </div>

@@ -4,7 +4,7 @@
 <div>
   <h2>Add Organization</h2>
   <div class="d-grid gap-2 d-md-block">
-    <a class="btn btn-primary" href="{{ route('organizations.index') }}" role="button">Back</a>
+    <a class="btn btn-primary btn-sm" href="{{ route('organizations.index') }}" role="button">Back</a>
   </div>
 </div>
 <hr>
@@ -44,7 +44,7 @@
       <div class="col-1"></div>
       <div class="col-2">Organization Name</div>
       <div class="col-8">
-        <input type="text" class="form-control form-control-sm" id="organization_name"><br>
+        <input type="text" class="form-control form-control-sm" name="organization_name"><br>
       </div>
     </div>
 
@@ -52,11 +52,31 @@
       <div class="col-1"></div>
       <div class="col-2">Description</div>
       <div class="col-8">
-        <textarea class="form-control" id="description" rows="3"></textarea>
+        <textarea class="form-control form-control-sm" name="description" rows="3"></textarea><br>
       </div>
     </div>
-  </div>
-  <hr>
+
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-2">Industry Category</div>
+      <div class="col-8">
+        <select class="form-select form-select-sm" name="industry_category" aria-label=".form-select-sm example">
+          <option selected>Open this select menu</option>
+          <option value="Agriculture">Agriculture</option>
+          <option value="Consulting & Professional Services">Consulting & Professional Services</option>
+          <option value="Electrical Equipment">Electrical Equipment</option>
+          <option value="Food & Beverage">Food & Beverage</option>
+          <option value="Health">Health</option>
+          <option value="Information & Communication Technology">Information & Communication Technology</option>
+          <option value="Fashion & Textiles">Fashion & Textiles</option>
+          <option value="Media & Entertainment">Media & Entertainment</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="Transportation & Logistics">Transportation & Logistics</option>
+          <option value="Other">Others...</option>
+        </select><br>
+      </div>
+    </div>
+    <hr>
 
   <div>
     <h3><strong>Location</strong></h3><br>
@@ -64,7 +84,7 @@
       <div class="col-1"></div>
       <div class="col-2">Address</div>
       <div class="col-8">
-        <textarea class="form-control" id="address" rows="3"></textarea><br>
+        <textarea class="form-control form-control-sm" name="address" rows="3"></textarea><br>
       </div>
     </div>
 
@@ -72,7 +92,7 @@
       <div class="col-1"></div>
       <div class="col-2">City</div>
       <div class="col-8">
-        <input type="text" class="form-control form-control-sm" id="city"><br>
+        <input type="text" class="form-control form-control-sm" name="city"><br>
       </div>
     </div>
 
@@ -80,7 +100,7 @@
       <div class="col-1"></div>
       <div class="col-2">Postal Code</div>
       <div class="col-8">
-        <input type="text" class="form-control form-control-sm" id="postal_code"><br>
+        <input type="text" class="form-control form-control-sm" name="postal_code"><br>
       </div>
     </div>
 
@@ -88,7 +108,7 @@
       <div class="col-1"></div>
       <div class="col-2">State</div>
       <div class="col-8">
-        <input type="text" class="form-control form-control-sm" id="state"><br>
+        <input type="text" class="form-control form-control-sm" name="state"><br>
       </div>
     </div>
 
@@ -96,7 +116,7 @@
       <div class="col-1"></div>
       <div class="col-2">Country</div>
       <div class="col-8">
-        <input type="text" class="form-control form-control-sm" id="country">
+        <input type="text" class="form-control form-control-sm" name="country">
       </div>
     </div>
   </div>
@@ -108,7 +128,7 @@
       <div class="col-1"></div>
       <div class="col-2">Email</div>
       <div class="col-8">
-        <input type="email" class="form-control form-control-sm" id="email"><br>
+        <input type="email" class="form-control form-control-sm" name="email"><br>
       </div>
     </div>
 
@@ -116,7 +136,7 @@
       <div class="col-1"></div>
       <div class="col-2">Phone No.</div>
       <div class="col-8">
-        <input type="tel" class="form-control form-control-sm" id="phone_no"><br>
+        <input type="tel" class="form-control form-control-sm" name="phone_no"><br>
       </div>
     </div>
 
@@ -124,7 +144,7 @@
       <div class="col-1"></div>
       <div class="col-2">Fax No.</div>
       <div class="col-8">
-        <input type="tel" class="form-control form-control-sm" id="fax_no"><br>
+        <input type="tel" class="form-control form-control-sm" name="fax_no"><br>
       </div>
     </div>
 
@@ -132,23 +152,12 @@
       <div class="col-1"></div>
       <div class="col-2">Web URL</div>
       <div class="col-8">
-        <input type="url" class="form-control form-control-sm" id="web_url"><br>
+        <input type="url" class="form-control form-control-sm" name="web_url"><br>
       </div>
     </div>
 
-      <!-- sementara jadi command
-      <div class="row">
-        <div class="col-1"></div>
-        <div class="col-2">Company Logo</div>
-        <div class="col-8">
-          <input type="file" class="form-control-file" id="orgLogo" name="image" accept="image/*">
-        </div>
-      </div>
-      <br> -->
-
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-primary" type="submit">Save</button>
-        <!-- button class="btn btn-outline-secondary" type="reset">Reset</button-->
+    <div class="d-grid gap-2 col-4 mx-auto">
+      <button class="btn btn-primary btn-sm" type="submit">Save</button>
     </div>
 </form>
 @endsection
