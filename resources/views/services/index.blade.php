@@ -3,14 +3,11 @@
 @section('content')
 
 <div>
-    <ul class="nav nav-pills mb-5">
-        {{-- <li class="nav-item">
-        <a class="nav-link" href="{{ route('services.show')}}">Service Catalog</a>
-        </li> --}}
-        <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{{ route('services.index') }}">Service Categories</a>
-        </li>
-    </ul>
+
+    <strong style="font-size:2em; display: block; line-height: 1.5;">
+        Service Categories
+    </strong>
+    <br>
 
     <div class="row mb-3">
         <div class="col-lg-12 margin-tb">
