@@ -59,14 +59,23 @@
         </div>
 
         <div class="col-md-6">
-
+            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
+                <div class="form-group">
+                    <strong>Asset :</strong>
+                    <select class="form-select" id="ownedBy" name="asset" required>
+                        @foreach($products as $product)
+                            <option value="{{$product->name}}" {{ $product->name === $service->asset ? 'selected' : '' }}>{{$product->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
                 <div class="form-group">
                     <strong>Owned By:</strong>
                     <select class="form-select" id="ownedBy" name="owned" required>
-                        <option value="owner1">Owner 1</option>
-                        <option value="owner2">Owner 2</option>
-                        <option value="owner3">Owner 3</option>
+                        @foreach($organizations as $org)
+                            <option value="{{$org->organization_name}}" {{ $org->organization_name === $service->owned ? 'selected' : '' }}>{{$org->organization_name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

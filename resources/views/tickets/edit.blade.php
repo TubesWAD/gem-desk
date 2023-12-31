@@ -63,16 +63,9 @@
             <label for="ticketType" class="form-label"><h2>Ticket Type</h2></label>
             <div class="input-group">
                 <select id="ticketType" name="ticket_type" class="form-select">
-{{--                    @foreach($ticketTypes as $ticketType => $value)--}}
-{{--                        <option value="{{$ticketType}}"--}}
-{{--                                @if ($ticketType == old('ticketType', $model->option))--}}
-{{--                                    selected="selected"--}}
-{{--                               @endif>--}}
-{{--                            {{$value}}--}}
-{{--                        </option>--}}
-{{--                    @endforeach--}}
-                    <option>Kebakaran</option>
-                    <option>Internet Mati</option>
+                    @foreach($incidents as $incident)
+                            <option value="{{$incident->incident}}" {{ $incident->incident === $ticket->ticket_type ? 'selected' : '' }}>{{$incident->incident}}</option>
+                    @endforeach
                 </select>
                 <a class="btn btn-outline-primary" href="#" role="button">No Types</a>
             </div>

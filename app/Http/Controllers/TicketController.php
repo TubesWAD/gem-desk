@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTicket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Incident;
 use App\Models\Solution;
 use App\Models\Ticket;
 use Illuminate\Http\RedirectResponse;
@@ -74,7 +75,8 @@ class TicketController extends Controller
      */
     public function create(): Response
     {
-        return response(view('tickets.create'));
+        $incidents = Incident::all();
+        return response(view('tickets.create', compact('incidents')));
     }
 
     /**
@@ -125,7 +127,8 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket): View
     {
-        return view('tickets.edit', compact('ticket'));
+        $incidents = Incident::all();
+        return view('tickets.edit', compact('incidents', 'ticket'));
     }
 
     /**
