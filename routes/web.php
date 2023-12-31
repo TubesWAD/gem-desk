@@ -80,8 +80,6 @@ Route::middleware('auth')->group(function () {
   
   Route::resource('services', ServicesController::class);
 
+  Route::resource('organizations', OrganizationController::class);
+
 });
-
-
-Route::resource('organizations', OrganizationController::class);
-//Route::resource('/departments', OrganizationController::class);

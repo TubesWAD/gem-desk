@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use App\Http\Requests\StoreOrganization;
-//use App\Http\Requests\StoreOrganizationRequest;
-//use App\Http\Requests\UpdateOrganizationRequest;
-
 use App\Models\Organization;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,11 +10,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-//use Illuminate\Support\Facades\Session;
-// use PhpParser\Builder;
-// use function PHPUnit\TestFixture\func;
-
-
 class OrganizationController extends Controller
 {
     /**
@@ -26,9 +17,8 @@ class OrganizationController extends Controller
      */
     public function index(): View
     {
-        $organizations = Organization::latest()->paginate(5);
+        $organizations = Organization::first()->paginate(7);
         
-        //$organizations = \App\Models\Organization::all();
         return view('organizations.index',compact('organizations'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }

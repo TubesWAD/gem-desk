@@ -3,7 +3,7 @@
 @section('content')
 <div>
   <h2>Add Organization</h2>
-  <div class="d-grid gap-2 d-md-block">
+  <div class="d-flex justify-content-start">
     <a class="btn btn-primary btn-sm" href="{{ route('organizations.index') }}" role="button">Back</a>
   </div>
 </div>
@@ -61,7 +61,7 @@
       <div class="col-2">Industry Category</div>
       <div class="col-8">
         <select class="form-select form-select-sm" name="industry_category" aria-label=".form-select-sm example">
-          <option selected>Open this select menu</option>
+          <option selected>Select here...</option>
           <option value="Agriculture">Agriculture</option>
           <option value="Consulting & Professional Services">Consulting & Professional Services</option>
           <option value="Electrical Equipment">Electrical Equipment</option>
@@ -72,7 +72,7 @@
           <option value="Media & Entertainment">Media & Entertainment</option>
           <option value="Manufacturing">Manufacturing</option>
           <option value="Transportation & Logistics">Transportation & Logistics</option>
-          <option value="Other">Others...</option>
+          <option value="Other">Others</option>
         </select><br>
       </div>
     </div>
@@ -156,9 +156,8 @@
       </div>
     </div>
 
-    <div class="d-grid gap-2 col-4 mx-auto">
+    <div class="d-grid gap-2 col-6 mx-auto">
       <button class="btn btn-primary btn-sm" type="submit">Save</button>
     </div>
 </form>
 @endsection
-

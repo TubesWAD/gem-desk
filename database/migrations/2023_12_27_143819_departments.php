@@ -8,22 +8,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * profile
-     * organization name
-     * description
-     * industry category
-     * location
-     * address
-     * city
-     * postal code
-     * state
-     * country
-     * contact information
-     * email ID
-     * phone number
-     * fax number
-     * web url
-     * company logo
      */
     public function up(): void
     {
@@ -31,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('deparment_name');
             $table->text('description');
-            $table->string('bussiness_impact');
+            $table->string('department_head');
             $table->timestamps();
         });
     }

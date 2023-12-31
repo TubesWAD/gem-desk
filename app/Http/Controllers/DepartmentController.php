@@ -13,8 +13,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $list_dept = \App\Models\Department::all();
-        return view('departments.index');
+        $department = Department::first()->paginate(5);
+        
+        return view('departments.index',compact('departments'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -30,7 +32,16 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'department_name' => 'required',
+            'description' => 'required',
+            'department_head' => 'nullable',
+        ]);
+
+        Department::create($request->all());
+
+        return redirect()->route('departments.index')
+                        ->with('success','Department created successfully!');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 <<<<<<< HEAD
 //use Illuminate\Support\Facades\schema;
 =======
@@ -35,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
             return '<?php endif; ?>';
         });
 >>>>>>> origin
+    Paginator::useBootstrap();
     }
 }

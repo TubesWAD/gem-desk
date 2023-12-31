@@ -68,7 +68,9 @@
       @endforeach
     </table>
   </div>
-  
-  {!! $organizations->links() !!}
+
+  <div clas="d-flex justify-content-start">
+      { $organizations->links() }
+  </div>
 
 @endsection
