@@ -12,7 +12,7 @@
         <thead>
         <tr>
             <th scope="col">No</th>
-            <th scope="col">Name</th>
+            <th scope="col">Leave Name</th>
             <th scope="col">Maximum Duration (Days)</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
@@ -28,7 +28,7 @@
                 <th scope="row">{{ $number ++ }}</th>
                 <td>{{ $leaveType->name}}</td>
                 <td>{{ $leaveType->max_duration}}</td>
-                <td> {{ $leaveType->status }} </td>
+                <td> {{ $leaveType->status}} </td>
                 <td>
                     <form action="{{route('leaveTypes.approve', $leaveType)}}" method="post">
                         @csrf

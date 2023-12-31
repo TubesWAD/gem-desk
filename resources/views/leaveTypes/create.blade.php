@@ -17,7 +17,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="durationLeaveType">Maximum Duration</label>
+        <label for="durationLeaveType">Maximum Duration (Days)</label>
         <input type="number" class="form-control" id="duartionLeaveType" name="max_duration" required>
       </div>
 

@@ -91,10 +91,6 @@ class LeaveTypeController extends Controller
         return view('leaveTypes.edit', compact('leaveType'));
     }
 
-    public function update(UpdateLeaveTypeRequest $request, LeaveType $leaveType){
-
-    }
-
     public function destroy(LeaveType $leaveType){
         $leaveType->delete();
         return redirect()->route('leaveTypes.index')->with('success','Leave Type has been deleted');
@@ -104,7 +100,6 @@ class LeaveTypeController extends Controller
     {
         $leaveType->status = 'approved';
         $leaveType->save();
-        
         return redirect()->route('leaveTypes.index');
     }
 }
