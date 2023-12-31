@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="container mt-5">
-        <h2>User Management</h2>
-        
+    <h1>User Management</h1>
+    <br>
+    <div class="container">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" value="{{ $user->email }}" disabled>
@@ -27,7 +26,8 @@
 
         <div class="form-group">
             <label for="department">Department Name</label>
-            <input type="text" class="form-control" name="department_name" value="{{ $user->department_name }}" disabled>
+            <input type="text" class="form-control" name="department_name" value="{{ $user->department_name }}"
+                   disabled>
         </div>
 
         <div class="form-group">
@@ -40,7 +40,7 @@
             <input type="text" class="form-control" name="mobile" value=" {{$user->mobile }}" disabled>
         </div>
 
-        <a class="btn btn-secondary" href="{{ route('userManagements.index') }}">Back</a>
+        <a class="btn btn-danger mt-2" href="{{ route('userManagements.index') }}">Back</a>
     </div>
 
 @endsection

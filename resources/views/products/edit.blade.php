@@ -10,7 +10,6 @@
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="name" value="{{ $products->name }}" required>
             </div>
-
             <div class="form-group">
                 <label for="manufacturer">Manufacturer:</label>
                 <input type="text" class="form-control" name="manufacturer" value="{{ $products->manufacturer }}" required>

@@ -25,19 +25,24 @@
         </div>
 
         <div class="asidebar">
-            <a href="" class="{{ request()->routeIs('') ? 'active' : '' }}">
-                <span class="material-symbols-outlined">manage_accounts</span>
-                <h3>Role</h3>
-            </a>
-            <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('userManagements.index')}}"
+               class="{{ request()->routeIs('userManagements**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">person</span>
                 <h3>User</h3>
             </a>
-            <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('leaveTypes.index')}}" class="{{ request()->routeIs('leaveTypes**') ? 'active' : '' }}">
+                <span class="material-symbols-outlined">
+                person_off
+                </span>
+                <h3>Leave Type</h3>
+            </a>
+            <a href="{{route('organizations.index')}}"
+               class="{{ request()->routeIs('organizations**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">location_home</span>
                 <h3>Organization</h3>
             </a>
-            <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('assetManagement.index')}}"
+               class="{{ request()->routeIs(['assetManagement**', 'productTypes**']) ? 'active' : '' }}">
                 <span class="material-symbols-outlined">inventory_2</span>
                 <h3>Asset Management</h3>
             </a>
@@ -45,22 +50,22 @@
                 <span class="material-symbols-outlined">support_agent</span>
                 <h3>Service Catalog</h3>
             </a>
-            <a href="#" class="{{ request()->routeIs('') ? 'active' : '' }}">
+            <a href="{{route('incidents.index')}}" class="{{ request()->routeIs('incidents**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">emergency_home</span>
-                <h3>Insiden Management</h3>
+                <h3>Incident Management</h3>
             </a>
             <a style="text-decoration: none" href="{{route('tickets.index')}}"
                class="{{ request()->routeIs('tickets**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">confirmation_number</span>
                 <h3>Ticket Management</h3>
             </a>
-            {{--            <form action="{{route('logout')}}" method="POST">--}}
-            {{--                @csrf--}}
-            {{--                <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">--}}
-            {{--                    <span class="material-symbols-outlined">logout</span>--}}
-            {{--                    <h3>Logout</h3>--}}
-            {{--                </a>--}}
-            {{--            </form> --}}
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </form>
 
 
         </div>
@@ -74,17 +79,16 @@
                 <button class="material-symbols-outlined" id="menu-btn">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-outlined active">light_mode</span>
-                    <span class="material-symbols-outlined">dark_mode</span>
-                </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Dinda</b></p>
-                        <small class="text-muted">Admin</small>
+                        @if(Auth::check())
+                            <p style="white-space: pre-line">Hey, <b>{{ Auth::user()->name }}</b>
+                                <b>{{Auth::user()->roles}}</b>
+                            </p>
+                        @endif
                     </div>
                     <div class="profile-photo">
-                        <img src="dind.png" alt="photo-profile"/>
+                        <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="photo-profile"/>
                     </div>
                 </div>
             </div>
@@ -96,7 +100,6 @@
     <!-- ============================END OF MAIN================== -->
 
 </div>
->>>>>>> staging
 @stack('script')
 <script>
     $("#alert").fadeTo(1500, 300).slideUp(300, function () {

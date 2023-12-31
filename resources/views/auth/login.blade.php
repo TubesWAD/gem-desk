@@ -11,13 +11,11 @@
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
                 name="email">
             <label for="floatingInput">Email address</label>
-            {{-- <x-input-error :messages="$errors->get('email')" class="mt-2" /> --}}
         </div>
         <div class="form-floating mt-2">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                 name="password">
             <label for="floatingPassword">Password</label>
-            {{-- <x-input-error :messages="$errors->get('password')" class="mt-2" /> --}}
         </div>
         <button type="submit" class="btn btn-primary w-100 py-2 my-3" type="submit">Sign in</button>
     </form>

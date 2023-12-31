@@ -173,7 +173,7 @@ class ServicesController extends Controller
     public function destroy(Service $service): RedirectResponse
     {
         $oldFile = $service->files;
-        unlink(storage_path('app/public') . $oldFile);
+        unlink(storage_path('app/public/') . $oldFile);
         $service->delete();
 
         return redirect()->route('services.index')

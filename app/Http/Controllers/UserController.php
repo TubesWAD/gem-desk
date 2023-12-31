@@ -34,16 +34,16 @@ class UserController extends Controller
                                         <td>' . $row->roles . '</td>
                                         <td>' . $row->mobile . '</td>
                                         <td class="d-flex justify-content-center">
-                                            <a class="btn btn-success me-1" href="' . route('userManagements.show', $row->id) . '">Show</a>
-                                            <a class="btn btn-primary me-1" href="' . route('userManagements.edit', $row->id) . '">Edit</a>
-                                            <form action="' . route('userManagements.destroy', $row->id) . '" method="post">
-                                                <input type="hidden" name="_token" value="' . csrf_token() . '">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger me-1">Delete</button>
-                                            </form>
-                                        </td>
-                                        </tr>
-                                    ';
+                                            <a class="btn btn-success me-1" href="' . route('userManagements.show', $row->id) . '">Show</a>';
+                                        if (auth()->user()->roles == 'admin') {
+                                            $output .= '
+                                        <a class="btn btn-primary me-1" href="' . route('userManagements.edit', $row->id) . '">Edit</a>
+                                        <form action="' . route('userManagements.destroy', $row->id) . '" method="post">
+                                            ' . csrf_field() . '
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger me-1">Delete</button>
+                                        </form>';
+                                        }
                     $loop+=1;
                 }
             }else{
@@ -140,7 +140,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-
         $oldPicture = $user->profile_picture;
         if ($oldPicture && file_exists(storage_path('app/public/') . $oldPicture)) {
             unlink(storage_path('app/public/') . $oldPicture);

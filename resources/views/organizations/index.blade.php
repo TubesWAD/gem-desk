@@ -2,7 +2,7 @@
 
 @section('content')
   <div>
-    <h2>Organization List</h2>
+    <h1>Organization List</h1>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <a class="btn btn-primary btn-sm" href="{{ route('organizations.create') }}">+ Add New Organization</a>
     </div>
@@ -22,14 +22,14 @@
   </svg>
 
   @if ($message = Session::get('success'))
-  <div class="alert alert-success d-flex align-items-center" role="alert">
+  <div class="alert alert-success d-flex align-items-center" role="alert" id="alert">
     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
     <div>{{ $message }}</div>
   </div><br>
   @endif
 
   @if($message = Session::get('error'))
-  <div class="alert alert-danger d-flex align-items-center" role="alert">
+  <div class="alert alert-danger d-flex align-items-center" role="alert" id="alert">
     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
     <div>{{ $message }}</div>
   </div><br>
@@ -47,7 +47,7 @@
           <th scope="col">Action</th>
         </tr>
       </thead>
-      
+
       @foreach ($organizations as $organization)
         <tr>
           <th scope="row">{{ ++$i }}</th>
