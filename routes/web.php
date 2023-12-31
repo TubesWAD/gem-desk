@@ -27,12 +27,17 @@ use App\Http\Controllers\AuthController;
 */
 
 
+Route::get('/', function () {
+    return view('layouts.landing');
+
+
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/', [AuthController::class, 'login'])->name('login.store');
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+
 });
 
 Route::middleware('auth')->group(function () {
