@@ -17,10 +17,11 @@
         <div class="mb-3">
             <label for="ServiceSelect" class="form-label">Impacted Service</label>
             <select class="form-select" name="service" id="ServiceSelect" aria-label="Impacted Service">
-                <option selected>Not assigned</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                @forelse($services as $service)
+                    <option value="{{ $service->name }}">{{ $service->name }}</option>
+                @empty
+                    <option value="" >There's no service</option>
+                @endforelse
             </select>
             <small class="text-muted">You can select a service that has been previously defined in the Service Catalog.</small>
         </div>
@@ -28,10 +29,11 @@
         <div class="mb-3">
             <label for="AssetSelect" class="form-label">Impacted Asset</label>
             <select class="form-select" name="asset" id="AssetSelect" aria-label="Impacted Asset">
-                <option selected>Not assigned</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                @forelse($assets as $product)
+                    <option value="{{ $product->name }}">{{ $product->name }}</option>
+                @empty
+                    <option value="" >There's no product</option>
+                @endforelse
             </select>
             <small class="text-muted">You can select an asset that has been previously defined in the Asset Management.</small>
         </div>
@@ -68,5 +70,5 @@
             <a href="{{ route('incidents.index') }}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
-    
+
 @endsection

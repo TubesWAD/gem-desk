@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('incidents', function (Blueprint $table) {
             $table->id();
             $table->string('incident');
-            $table->integer('service_id')->nullable();
-            $table->integer('asset_id')->nullable();
+            $table->string('service')->nullable();
+            $table->string('asset')->nullable();
             $table->string('probability');
             $table->string('risk_impact');
             $table->string('priority');

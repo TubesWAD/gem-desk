@@ -16,6 +16,7 @@ return new class extends Migration
            $table->id();
            $table->string('title');
            $table->text('description');
+           $table->integer('user_id');
            $table->string('ticket_type');
            $table->string('files');
            $table->string('status');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Organization;
+use App\Models\Product;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -25,7 +27,7 @@ class ServicesController extends Controller
             $loop = 0;
             if (count($data) > 0) {
                 foreach ($data as $service) {
-                    
+
                     echo '
                         <tr>
                             <td>' . ($loop + 1) . '</td>
@@ -59,7 +61,7 @@ class ServicesController extends Controller
         $services = Service::query()->where('name', 'LIKE', '%' . $query . '%')
             ->simplePaginate(8);
         return view('services.index',compact('services'));
-                    
+
     }
 
     /**
@@ -67,7 +69,9 @@ class ServicesController extends Controller
      */
     public function create(): Response
     {
-        return response(view('services.create'));
+        $organizations = Organization::all();
+        $products = Product::all();
+        return response(view('services.create', compact('organizations','products')) );
     }
 
     /**
@@ -79,6 +83,7 @@ class ServicesController extends Controller
             'name' => 'required',
             'description' => 'required',
             'service_categories' => 'required',
+            'asset' => 'required',
             'cost' => 'required',
             'availability' => 'required',
             'hours' => 'required',
@@ -89,6 +94,7 @@ class ServicesController extends Controller
         $service = new Service;
         $service->name = $request->name;
         $service->service_categories = $request->service_categories;
+        $service->asset = $request->asset;
         $service->description = $request->description;
         $service->cost = $request->cost;
         $service->availability = $request->availability;
@@ -121,7 +127,9 @@ class ServicesController extends Controller
      */
     public function edit(Service $service): View
     {
-        return view('services.edit', compact('service'));
+        $organizations = Organization::all();
+        $products = Product::all();
+        return view('services.edit', compact('service', 'organizations', 'products'));
     }
 
     /**
@@ -133,6 +141,7 @@ class ServicesController extends Controller
             'name' => 'required',
             'description' => 'required',
             'service_categories' => 'required',
+            'asset' => 'required',
             'cost' => 'required',
             'availability' => 'required',
             'hours' => 'required',
@@ -143,6 +152,7 @@ class ServicesController extends Controller
         $service->name = $request-> name;
         $service->service_categories = $request-> service_categories;
         $service->description = $request-> description;
+        $service->asset = $request-> asset;
         $service->cost = $request-> cost;
         $service->availability = $request-> availability;
         $service->hours = $request-> hours;

@@ -43,8 +43,11 @@
             <label for="ticketType" class="form-label"><h2>Ticket Type</h2></label>
             <div class="input-group">
                 <select id="ticketType" name="ticket_type" class="form-select">
-                    <option>Kebakaran</option>
-                    <option>Internet Mati</option>
+                    @forelse($incidents as $incident)
+                        <option value="{{ $incident->incident }}">{{ $incident->incident }}</option>
+                    @empty
+                        <option >There's no incident</option>
+                    @endforelse
                 </select>
                 <a class="btn btn-outline-warning rounded" href="{{route('incidentTemps.create')}}" role="button">No Types</a>
                 <div id="ticketTypeHelp" class="input-group form-text">

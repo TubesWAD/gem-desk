@@ -4,7 +4,7 @@
  <div class="container-fluid">
    <div class="row">
        <div class="col-lg-12 margin-tb d-flex align-items-center" style="border-bottom: 2px solid #ccc; padding-bottom: 0px; margin-bottom: 20px;">
-           <a class="btn btn-primary" href="{{ route('services.index') }}" style="padding-bottom: 10px; margin-bottom: 15px; margin-right: 30px;">Back</a>
+           <a class="btn btn-primary" href="{{ route('services.index') }}" style=" margin-bottom: 15px; margin-right: 30px;">Back</a>
            <h2 style="padding-bottom: 10px; margin-bottom: 10px;">Show {{ $service->name }} Service</h2>
        </div>
    </div>
@@ -44,9 +44,20 @@
                      </div>
                  </div>
                </div>
+
            </div>
 
            <div class="row">
+               <div class="col-md-6">
+                   <div class="card" style="width: 100%;">
+                       <div class="card-body">
+                           <div class="form-group">
+                               <strong>Asset</strong><br>
+                               {{ $service->asset }}
+                           </div>
+                       </div>
+                   </div>
+               </div>
                <div class="col-md-6">
                  <div class="card" style="width: 100%;">
                      <div class="card-body">

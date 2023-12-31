@@ -17,7 +17,7 @@ class Incident extends Model
         'risk_impact',
         'priority',
         'incident_desc',
-        'service_id',
-        'asset_id',
+        'service',
+        'asset',
     ];
 }
