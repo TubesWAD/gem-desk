@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Leave Type</h2>
+    <h1>Leave Type</h1>
     <a href="{{route('leaveTypes.create')}}" type="submit" class="btn btn-primary" style="margin-bottom:1%">Add</a>
     @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert" style="margin-top: 1%">
+        <div class="alert alert-success" role="alert" id="alert" style="margin-top: 1%">
             {{$message}}
         </div>
     @endif
@@ -15,13 +15,13 @@
             <th scope="col">Leave Name</th>
             <th scope="col">Maximum Duration (Days)</th>
             <th scope="col">Status</th>
-            <th scope="col">Action</th>
+            <th scope="col" class="d-flex justify-content-center">Action</th>
         </tr>
         </thead>
 
         <tbody>
         @php
-            $number = 1;   
+            $number = 1;
         @endphp
         @forelse ($leaveTypes as $index => $leaveType)
             <tr>
@@ -29,15 +29,20 @@
                 <td>{{ $leaveType->name}}</td>
                 <td>{{ $leaveType->max_duration}}</td>
                 <td> {{ $leaveType->status}} </td>
-                <td>
-                    <form action="{{route('leaveTypes.approve', $leaveType)}}" method="post">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-submit me-1" href="{{ route('leaveTypes.index') }}">
-                            Approve
-                        </button>
-                    </form>
-                    <a href="{{ route('leaveTypes.show', $leaveType->id) }}" class="btn btn-info"
+                <td class="d-flex justify-content-center">
+                    @role('admin')
+                        @if($leaveType->status != 'approved')
+                            <form action="{{route('leaveTypes.approve', $leaveType)}}" method="post">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn btn-success me-1"  href="{{ route('leaveTypes.index') }}">
+                                    Approve
+                                </button>
+                            </form>
+                        @endif
+                    @endrole
+
+                    <a href="{{ route('leaveTypes.show', $leaveType->id) }}" class="btn btn-info me-1"
                         style="margin-right: 2%">Show</a>
                     <a class="btn btn-danger me-1" href="#" onclick="
                             event.preventDefault();
@@ -61,4 +66,9 @@
         @endforelse
         </tbody>
     </table>
+    <div class="mt-3" style="text-align: center;">
+        {{  $leaveTypes->withQueryString()->links() }}
+    </div>
 @endsection
+@push('script')
+@endpush

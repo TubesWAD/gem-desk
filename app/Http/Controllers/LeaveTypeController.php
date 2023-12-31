@@ -58,10 +58,17 @@ class LeaveTypeController extends Controller
             }
             return $output;
         }
+        if (auth()->user()->roles == 'admin'){
+            $leaveTypes = LeaveType::query()->where('name', 'LIKE', '%' . $query . '%')
+                ->simplePaginate(8);
+        }else{
+            $user_id = auth()->user()->id;
+            $leaveTypes = LeaveType::query()
+                ->where('name', 'LIKE', '%' . $query . '%')
+                ->where('user_id', '=', $user_id)
+                ->simplePaginate(8);
+        }
 
-
-        $leaveTypes = LeaveType::query()->where('name', 'LIKE', '%' . $query . '%')
-            ->simplePaginate(8);
         return view('leaveTypes.index', compact('leaveTypes'));
     }
 
@@ -75,6 +82,7 @@ class LeaveTypeController extends Controller
         $leaveType->name = $request->name;
         $leaveType->description = $request->description;
         $leaveType->max_duration = $request->max_duration;
+        $leaveType->user_id = auth()->user()->id;
 
         $leaveType->save($request->validated());
         return redirect()->route('leaveTypes.index')

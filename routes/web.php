@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
         Route::get('userManagements/{id}/edit', [UserController::class, 'edit'])->name('userManagements.edit');
         Route::patch('userManagements/{id}', [UserController::class, 'update'])->name('userManagements.update');
         Route::delete('userManagements/{id}', [UserController::class, 'destroy'])->name('userManagements.destroy');
+
+        Route::patch('/leaveTypes/{leaveType}/approve', [LeaveTypeController::class, 'approve'])->name('leaveTypes.approve');
     });
 
     Route::get('userManagements', [UserController::class, 'index'])->name('userManagements.index');
@@ -50,7 +52,6 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
 
     Route::resource('/leaveTypes', LeaveTypeController::class);
-    Route::patch('/leaveTypes/{leaveType}/approve', [LeaveTypeController::class, 'approve'])->name('leaveTypes.approve');
 
     Route::resource('/tickets', TicketController::class);
     Route::post('/tickets/{id}/createMessage', [TicketController::class, 'createMessage'])->name('tickets.createMessage');

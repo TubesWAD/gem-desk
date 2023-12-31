@@ -25,15 +25,24 @@
         </div>
 
         <div class="asidebar">
-            <a href="{{route('userManagements.index')}}" class="{{ request()->routeIs('userManagements**') ? 'active' : '' }}">
+            <a href="{{route('userManagements.index')}}"
+               class="{{ request()->routeIs('userManagements**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">person</span>
                 <h3>User</h3>
             </a>
-            <a href="{{route('organizations.index')}}" class="{{ request()->routeIs('organizations**') ? 'active' : '' }}">
+            <a href="{{route('leaveTypes.index')}}" class="{{ request()->routeIs('leaveTypes**') ? 'active' : '' }}">
+                <span class="material-symbols-outlined">
+                person_off
+                </span>
+                <h3>Leave Type</h3>
+            </a>
+            <a href="{{route('organizations.index')}}"
+               class="{{ request()->routeIs('organizations**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">location_home</span>
                 <h3>Organization</h3>
             </a>
-            <a href="{{route('assetManagement.index')}}" class="{{ request()->routeIs(['assetManagement**', 'productTypes**']) ? 'active' : '' }}">
+            <a href="{{route('assetManagement.index')}}"
+               class="{{ request()->routeIs(['assetManagement**', 'productTypes**']) ? 'active' : '' }}">
                 <span class="material-symbols-outlined">inventory_2</span>
                 <h3>Asset Management</h3>
             </a>

@@ -14,6 +14,7 @@ class LeaveType extends Model
         'name',
         'description',
         'max_duration',
+        'user_id',
         'status'
     ];
 

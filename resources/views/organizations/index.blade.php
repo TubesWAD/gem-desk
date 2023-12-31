@@ -2,7 +2,7 @@
 
 @section('content')
   <div>
-    <h2>Organization List</h2>
+    <h1>Organization List</h1>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <a class="btn btn-primary btn-sm" href="{{ route('organizations.create') }}">+ Add New Organization</a>
     </div>
