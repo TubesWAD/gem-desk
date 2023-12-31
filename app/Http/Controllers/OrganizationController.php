@@ -17,16 +17,20 @@ class OrganizationController extends Controller
      */
     public function index(): View
     {
-        $organization = Organization::first();
+        // $organization = Organization::first();
         
-        if ($organization) {
-            $organization = Organization::paginate(6);
-            return view('organizations.index',compact('organizations'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
-        } else {
-            return view('organizations.index')->with('message', '!! No Record Found !!');
-        }
-        //$organizations = Organization::first()->paginate(6);
+        // if ($organization) {
+        //     $organization = Organization::paginate(6);
+        //     return view('organizations.index',compact('organizations'))
+        //             ->with('i', (request()->input('page', 1) - 1) * 5);
+        // } else {
+        //     return view('organizations.index')->with('message', '!! No Record Found !!');
+        // }
+        
+        $organizations = Organization::first()->paginate(6);
+
+        return view('organizations.index',compact('organizations'))
+                     ->with('i', (request()->input('page', 1) - 1) * 5);
         
     }
 

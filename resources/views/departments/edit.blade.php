@@ -53,7 +53,7 @@
 
         <div class="col-10">
             <label for="department_head" class="form-label">Department Head</label>
-            <input type="text" class="form-control form-control-sm" name="department head" value="{{ $department->department_head }}">
+            <input type="text" class="form-control form-control-sm" name="department_head" value="{{ $department->department_head }}">
         </div>
         <br>
 

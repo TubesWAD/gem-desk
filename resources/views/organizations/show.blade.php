@@ -15,7 +15,7 @@
           <a class="nav-link active" aria-current="true" href="#"><b>Profile</b></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="true" href="http://127.0.0.1:8000/department">Department</a>
+          <a class="nav-link" aria-current="true" href="{{ route('departments.index') }}">Department</a>
         </li>
       </ul>
     </div>
