@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-  <h2>{{ $organization->organization_name }}</h2><br>
+{{--  <h2>{{ $organization->organization_name }}</h2><br>--}}
+    <h2>Department</h2>
   <div class="card">
 
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link " aria-current="true" href="{{ route('organizations.show',$organization->id) }}">Profile</a>
-        </li>
+{{--        <li class="nav-item">--}}
+{{--          <a class="nav-link " aria-current="true" href="{{ route('organizations.show',$organization->id) }}">Profile</a>--}}
+{{--        </li>--}}
         <li class="nav-item">
           <a class="nav-link active" aria-current="false" href="#"><b>Department</b></a>
         </li>
@@ -40,7 +41,7 @@
       <div>{{ $message }}</div>
     </div><br>
     @endif
-                  
+
     <div class="card-body">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-primary btn-sm" href="/organization/create" role="button">+ Add Department</a>
@@ -74,10 +75,10 @@
                 </tr>
             @endforeach
         </table>
-      
-        <div clas="d-flex justify-content-start">
-          {{ $departments->links() }}
-        </div>
+
+{{--        <div clas="d-flex justify-content-start">--}}
+{{--          {{ $departments->links() }}--}}
+{{--        </div>--}}
     </div>
   </div>
 @endsection

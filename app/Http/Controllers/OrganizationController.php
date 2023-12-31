@@ -17,21 +17,23 @@ class OrganizationController extends Controller
      */
     public function index(): View
     {
-        // $organization = Organization::first();
-        
-        // if ($organization) {
-        //     $organization = Organization::paginate(6);
-        //     return view('organizations.index',compact('organizations'))
-        //             ->with('i', (request()->input('page', 1) - 1) * 5);
-        // } else {
-        //     return view('organizations.index')->with('message', '!! No Record Found !!');
-        // }
-        
-        $organizations = Organization::first()->paginate(6);
+         $organizations = Organization::all();
 
-        return view('organizations.index',compact('organizations'))
-                     ->with('i', (request()->input('page', 1) - 1) * 5);
-        
+//         if ($organizations) {
+//             $organizations = Organization::paginate(6);
+//             return view('organizations.index',compact('organizations'))
+//                     ->with('i', (request()->input('page', 1) - 1) * 5);
+//         } else {
+//             return view('organizations.index')->with('message', '!! No Record Found !!');
+//         }
+
+        return view('organizations.index',compact('organizations'));
+
+//        $organizations = Organization::first()->paginate(6);
+
+//        return view('organizations.index',compact('organizations'))
+//                     ->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
     /**
@@ -75,7 +77,7 @@ class OrganizationController extends Controller
     {
         return view('organizations.show', compact('organization'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -105,7 +107,7 @@ class OrganizationController extends Controller
         ]);
 
         $organization->update($request->all());
-        
+
         return redirect()->route('organizations.index')
                         ->with('success','Organization updated successfully!');
     }

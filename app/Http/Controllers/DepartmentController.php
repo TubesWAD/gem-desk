@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\department;
 use App\Http\Controllers\Controller;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
 use Illuminate\Http\RedirectResponse;
@@ -17,10 +18,11 @@ class DepartmentController extends Controller
      */
     public function index(): View
     {
-        $department = Department::first()->paginate(5);
-        
-        return view('departments.index',compact('departments'))
-                    ->with('i', (request()->input('page', 1) - 1) * 5);
+        $departments = Department::all();
+        $organization = Organization::all();
+
+        return view('departments.index',compact('departments', 'organization'));
+//                    ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

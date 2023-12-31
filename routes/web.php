@@ -1,17 +1,18 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\SolutionController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\IncidentTempController;
 use App\Http\Controllers\AssetManagementController;
 use App\Http\Controllers\ProductTypeController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrganizationController;
 
 /*
@@ -40,7 +41,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::middleware(['admin'])->group(function (){
+    Route::middleware(['admin'])->group(function () {
         Route::get('userManagements/create', [UserController::class, 'create'])->name('userManagements.create');
         Route::post('userManagements', [UserController::class, 'store'])->name('userManagements.store');
         Route::get('userManagements/{id}/edit', [UserController::class, 'edit'])->name('userManagements.edit');
@@ -92,20 +93,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/deleteproducts/{id}', [ProductController::class, 'delete'])->name('products.delete');
 
 
+    Route::resource('services', ServicesController::class);
+    Route::resource('incidents', IncidentController::class);
 
-  Route::resource('services', ServicesController::class);
-  Route::resource('incidents', IncidentController::class);
 
-
-  Route::resource('organizations', OrganizationController::class);
-  Route::resource('departments', DepartmentController::class);
+    Route::resource('organizations', OrganizationController::class);
+    Route::resource('departments', DepartmentController::class);
 
     //service (Dinda)
     Route::resource('services', ServicesController::class);
-
-   
-
-});
 
 
 });
