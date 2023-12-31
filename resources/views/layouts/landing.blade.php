@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    
+
     <nav>
         <a href="#home">Home</a>
         <div class="login-register">
@@ -34,7 +34,27 @@
     </div>
 
 
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <section>
+                    <h2>Welcome to Our Service Desk</h2>
+                    <p>Experience top-notch IT support with our dedicated service desk team. We are here to help you with any
+                        technical issues and inquiries you may have.</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </section>
+            </div>
+            
+            <div class="col-md-6">
+                <section>
+                    <h2>Contact Us</h2>
+                    <p>Have questions or need assistance? Feel free to reach out to us.</p>
+                    <p>Email: support@servicedesk.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2023 Gem-Desk. All rights reserved.</p>
