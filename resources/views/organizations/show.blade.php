@@ -37,7 +37,13 @@
       <p>{{ $organization->country }}</p><br>
                     
       <h3 class="card-title">Contact Information</h3>
-      <p>{{ $organization->email }}</p><br>
+      <p>
+          - Email: {{ $organization->email }}<br>
+          - Phone Number: {{ $organization->phone_no }}<br>
+          - Fax Number: {{ $organization->fax_no }}<br>
+          - Web url: {{ $organization->web_url }}
+      </p>
+        <br>
       
       @csrf
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
