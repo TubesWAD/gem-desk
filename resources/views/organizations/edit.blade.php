@@ -158,7 +158,7 @@
       </div>
       <br>
 
-      <div class="d-flex justify-content-center">
+      <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary me-md-2" type="submit">Save</button>
       </div>
     </div>
