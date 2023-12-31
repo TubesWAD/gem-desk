@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 =======
 use Illuminate\Support\Facades\Blade;
 >>>>>>> origin
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
             return '<?php endif; ?>';
         });
 >>>>>>> origin
+    Paginator::useBootstrap();
     }
 }
