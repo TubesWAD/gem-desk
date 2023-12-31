@@ -11,6 +11,7 @@
         <div class="mb-3">
             <label for="IncidentInput" class="form-label">Incident</label>
             <input type="text" class="form-control" name="incident" id="IncidentInput" placeholder="Incident Title">
+            <small class="text-muted">Enter a descriptive title for the incident.</small>
         </div>
 
         <div class="mb-3">
@@ -21,6 +22,7 @@
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
+            <small class="text-muted">You can select a service that has been previously defined in the Service Catalog.</small>
         </div>
 
         <div class="mb-3">
@@ -31,6 +33,7 @@
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
+            <small class="text-muted">You can select an asset that has been previously defined in the Asset Management.</small>
         </div>
 
         <div class="mb-3">
@@ -41,6 +44,7 @@
                 <option value="Medium">Medium (Incident may occur once in 3 months)</option>
                 <option value="High">High (Incident may occur once a month)</option>
             </select>
+            <small class="text-muted">It refers to how often will the incident happen, this parameter is used to calculate and determine the priority of the incident.</small>
         </div>
 
         <div class="mb-3">
@@ -51,6 +55,7 @@
                 <option value="Medium">Medium (Service is unavailable for 6 - 24 hours)</option>
                 <option value="High">High (Service is unavailable for more than 24 hours)</option>
             </select>
+            <small class="text-muted">It refers to how severe is the impact of the incident to its related, this parameter is used to calculate and determine the priority of the incident.</small>
         </div>
 
         <div class="mb-3">
