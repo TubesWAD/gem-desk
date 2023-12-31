@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('product_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('organization_name');
             $table->string('asset_type');
             $table->string('asset_category');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

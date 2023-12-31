@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AssetManagementController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::get('/deleteproductTypes/{id}', [ProductTypeController::class, 'delete'])
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/createproducts', [ProductController::class, 'create'])->name('products.create');
 Route::post('/storeproducts', [ProductController::class, 'store'])->name('products.store');
+Route::get('/getProductTypesByOrganization', [ProductController::class, 'getProductTypesByOrganization'])->name('getProductTypesByOrganization');
 Route::get('/showproducts/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/editproducts/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/updateproducts/{id}', [ProductController::class, 'update'])->name('products.update');

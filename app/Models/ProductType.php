@@ -14,5 +14,5 @@ class ProductType extends Model
         return $this->hasOne(Asset::class);
     }
 
-    protected $fillable = ['name', 'asset_type', 'asset_category', 'description'];
+    protected $fillable = ['name', 'organization_name', 'asset_type', 'asset_category', 'description'];
 }

@@ -16,17 +16,12 @@ session()->forget('success');
             </div>
     </div>
     @if (count($productTypes) > 0)
-    <form action="{{ route('productTypes.index') }}" method="GET">
-        <div class="d-flex justify-content-end">
-            <div class="input-group mb-3  w-25">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="search" autocomplete="off">
-            </div>
-        </div>
-    </form>
+    <br>
     <table class="table text-center">
         <thead class="mb-3">
             <tr>
                 <th>Name</th>
+                <th>Property Of</th>
                 <th>Asset Type</th>
                 <th>Asset Category</th>
                 <th>Action</th>
@@ -36,6 +31,7 @@ session()->forget('success');
         @foreach ($productTypes as $productType)
             <tr>
                 <td>{{ $productType->name }}</td>
+                <td>{{ $productType->organization_name }}</td>
                 <td>{{ $productType->asset_type }}</td>
                 <td>{{ $productType->asset_category }}</td>
                 <td>

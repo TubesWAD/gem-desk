@@ -32,7 +32,7 @@
             <span class="material-symbols-outlined">person</span>
             <h3>User</h3>
           </a>
-          <a href="#">
+          <a href="{{ route('organizations.index')}}" class="{{ request()->routeIs('organizations**') ? 'active' : '' }}">
             <span class="material-symbols-outlined">location_home</span>
             <h3>Organization</h3>
           </a>

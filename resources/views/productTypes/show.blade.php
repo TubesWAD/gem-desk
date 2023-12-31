@@ -7,10 +7,15 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="nama">Nama:</label>
+                <label for="nama">Name:</label>
                 <input type="text" class="form-control" name="name" value="{{ $productTypes->name }}" disabled>
             </div>
             
+            <div class="form-group">
+                <label for="asset_type">Property Of:</label>
+                <input type="text" class="form-control" name="asset_type" value="{{ $productTypes->organization_name }}" disabled>
+            </div>
+
             <div class="form-group">
                 <label for="asset_type">Asset Type:</label>
                 <input type="text" class="form-control" name="asset_type" value="{{ $productTypes->asset_type }}" disabled>

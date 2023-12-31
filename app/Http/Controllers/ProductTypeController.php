@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
 class ProductTypeController extends Controller
@@ -17,7 +18,8 @@ class ProductTypeController extends Controller
 
     public function create()
     {
-        return view('productTypes.create');
+        $organizations = Organization::all();
+        return view('productTypes.create', compact('organizations'));
     }
 
     public function show($id)
@@ -30,6 +32,7 @@ class ProductTypeController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'organization_name' => 'required',
             'asset_type' => 'required',
             'asset_category' => 'required',
             'description' => 'required',
@@ -44,13 +47,15 @@ class ProductTypeController extends Controller
     public function edit($id)
     {
         $productTypes = ProductType::findOrFail($id);
-        return view('productTypes.edit', compact('productTypes'));
+        $organizations = Organization::all();
+        return view('productTypes.edit', compact('productTypes','organizations'));
     }
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'organization_name' => 'required',
             'asset_type' => 'required',
             'asset_category' => 'required',
             'description' => 'required',
@@ -66,8 +71,8 @@ class ProductTypeController extends Controller
     public function delete(Request $request)
     {
         $id = $request->id;
-        $productType = ProductType::findOrFail($id);
-        $name = $productType->name;
+        $productTypes = ProductType::findOrFail($id);
+        $name = $productTypes->name;
         $products = Product::where('product_type', $name)->exists();
         
         if ($products) {
@@ -75,7 +80,7 @@ class ProductTypeController extends Controller
                             ->with('success', 'You cannot delete this product type because there are still products using this type.');
         }
 
-        $productType->delete();
+        $productTypes->delete();
         return redirect()->route('productTypes.index')
                         ->with('success', 'Product Type deleted successfully.');
     }}

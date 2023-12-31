@@ -3,21 +3,12 @@
 @section('content')
     <div class="container">
         <h2>Edit Item</h2>
-        <form action="{{ route('products.update', $products->id) }}" method="POST">
+        <form action="{{ route('products.update', 'getProductTypesByOrganization', $products->id) }}" method="POST" id="editProductForm">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" name="name" value="{{ $products->name }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="product_type" class="form-label">Product Type:</label>
-                <select class="form-control" id="product_type" name="product_type"  aria-label="Default select example" required>
-                    @foreach($productTypes as $type)
-                        <option value="{{ $type->name }}" {{ $type->name ? 'selected' : '' }} >{{ $type->name }}</option>
-                    @endforeach
-                </select>
             </div>
 
             <div class="form-group">
@@ -31,7 +22,7 @@
             </div>
 
             <div class="form-group">
-                <label for="deskripsi">Deskripsi:</label>
+                <label for="description">Deskripsi:</label>
                 <textarea class="form-control" name="description" required>{{ $products->description }}</textarea>
             </div>
 
@@ -40,3 +31,4 @@
         </form>
     </div>
 @endsection
+

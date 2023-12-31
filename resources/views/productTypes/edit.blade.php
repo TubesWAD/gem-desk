@@ -10,6 +10,16 @@
                 <label for="nama">Nama:</label>
                 <input type="text" class="form-control" name="name" value="{{ $productTypes->name }}" required>
             </div>
+
+            <div class="form-group">
+                <label for="product_type" class="form-label">Property of:</label>
+                <select class="form-control" id="organization_name" name="organization_name"  aria-label="Default select example" required>
+                    @foreach($organizations as $org)
+                    <option value="{{ $org->organization_name }}" {{ $org->organization_name == $productTypes->organization_name ? 'selected' : '' }}>{{ $org->organization_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="asset_type" class="form-label">Asset Type:</label>
                 <select class="form-control" id="asset_type" name="asset_type" aria-label="Default select example" required>
