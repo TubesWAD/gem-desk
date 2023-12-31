@@ -36,7 +36,7 @@
                     <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 1">
                     <div class="card-body">
                         <h5 class="card-title">Card 1</h5>
-                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae maiores fugiat cupiditate obcaecati vitae explicabo cum accusamus veniam in voluptate libero dolorum ullam repellat, laboriosam impedit repudiandae quibusdam quia optio!</p>
+                        <p class="card-text custom-card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae maiores fugiat cupiditate obcaecati vitae explicabo cum accusamus veniam in voluptate libero dolorum ullam repellat, laboriosam impedit repudiandae quibusdam quia optio!</p>
                     </div>
                 </div>
             </div>
@@ -44,8 +44,9 @@
                 <div class="card">
                     <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 2">
                     <div class="card-body">
-                        <h5 class="card-title">Card 2</h5>
-                        <p class="card-text">Description of Card 2.</p>
+                        <h5 class="card-title">Organization Management</h5>
+                        <p class="card-text custom-card-text">This feature facilitates the structured organization and coordination of team hierarchies, workflows, and processes, ensuring seamless operational management within an organization.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -53,8 +54,9 @@
                 <div class="card">
                     <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 3">
                     <div class="card-body">
-                        <h5 class="card-title">Card 3</h5>
-                        <p class="card-text">Description of Card 3.</p>
+                        <h5 class="card-title">Services Catalog</h5>
+                        <p class="card-text custom-card-text">This feature offers a comprehensive catalog of services provided by the organization, allowing users to easily browse, select, and request the services they need.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -65,8 +67,8 @@
                 <div class="card">
                     <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 1">
                     <div class="card-body">
-                        <h5 class="card-title">Card 1</h5>
-                        <p class="card-text">Description of Card 1.</p>
+                        <h5 class="card-title">Asset Management</h5>
+                        <p class="card-text custom-card-text">It provides tools for tracking and managing all organizational assets, including hardware and software resources, ensuring efficient allocation and maintenance.</p>
                     </div>
                 </div>
             </div>
@@ -74,8 +76,8 @@
                 <div class="card">
                     <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 2">
                     <div class="card-body">
-                        <h5 class="card-title">Card 2</h5>
-                        <p class="card-text">Description of Card 2.</p>
+                        <h5 class="card-title">Incident Management</h5>
+                        <p class="card-text custom-card-text">Focused on swiftly addressing and resolving unexpected issues and incidents, this feature ensures minimal disruption and maintains service continuity</p>
                     </div>
                 </div>
             </div>
@@ -83,8 +85,8 @@
                 <div class="card">
                     <img src="{{asset('img/gem-desk.png')}}" class="card-img-top custom-card-img" alt="Card 3">
                     <div class="card-body">
-                        <h5 class="card-title">Card 3</h5>
-                        <p class="card-text">Description of Card 3.</p>
+                        <h5 class="card-title">Ticket Management</h5>
+                        <p class="card-text custom-card-text">A robust system for handling and tracking customer queries and service requests, ensuring every issue is addressed in an organized and timely manner.</p>
                     </div>
                 </div>
             </div>
