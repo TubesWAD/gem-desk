@@ -36,7 +36,17 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resource('/userManagements', UserController::class);
+    Route::middleware(['admin'])->group(function (){
+        Route::get('userManagements/create', [UserController::class, 'create'])->name('userManagements.create');
+        Route::post('userManagements', [UserController::class, 'store'])->name('userManagements.store');
+        Route::get('userManagements/{id}/edit', [UserController::class, 'edit'])->name('userManagements.edit');
+        Route::patch('userManagements/{id}', [UserController::class, 'update'])->name('userManagements.update');
+        Route::delete('userManagements/{id}', [UserController::class, 'destroy'])->name('userManagements.destroy');
+    });
+
+    Route::get('userManagements', [UserController::class, 'index'])->name('userManagements.index');
+    Route::get('userManagements/{id}', [UserController::class, 'show'])->name('userManagements.show');
+
     Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
 
     Route::resource('/leaveTypes', LeaveTypeController::class);
