@@ -63,41 +63,41 @@ header p {
 }
 
 nav {
-    height: 70px; 
-    background-color: #2F4A6D; 
+    height: 70px;
+    background-color: #2F4A6D;
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    padding: 0 20px; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 nav a {
     text-decoration: none;
     color: #fff;
     margin-right: 20px;
-    padding: 10px 15px; 
-    border-radius: 5px; 
+    padding: 10px 15px;
+    border-radius: 5px;
 }
 
 nav a:hover {
-    background-color: #2f4a6f; 
-    color: #fff; 
+    background-color: #2f4a6f;
+    color: #fff;
 }
 
 .login-register a {
     margin-right: 20px;
-    text-decoration: none; 
+    text-decoration: none;
     transition: background-color 0.3s, box-shadow 0.9s, color 0.9s;
 }
 
 .login-register a#login {
-    background-color: #fff; 
-    color: #2F4A6D; 
+    background-color: #fff;
+    color: #2F4A6D;
 }
 
 .login-register a#register {
-    background-color: #fff; 
-    color: #2F4A6D; 
+    background-color: #fff;
+    color: #2F4A6D;
 }
 
 .login-register a:hover {
@@ -108,6 +108,7 @@ nav a:hover {
 
 .card {
     max-width: 540px;
+    width: 400px;
     margin-bottom: 20px;
 }
 
@@ -153,8 +154,8 @@ footer p {
 }
 
 .custom-card-img {
-    width: 50%; 
-    height: auto; 
+    width: 50%;
+    height: auto;
     display: block;
     margin: auto;
   }

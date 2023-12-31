@@ -29,12 +29,12 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('layouts.landing');
+});
 
-
-
+// User (Fanny)
 Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/', [AuthController::class, 'login'])->name('login.store');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register'])->name('register.store');
 
@@ -56,19 +56,22 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
 
+    //leaveType (Wildan)
     Route::resource('/leaveTypes', LeaveTypeController::class);
 
+    //Ticketing (Hanif)
     Route::resource('/tickets', TicketController::class);
     Route::post('/tickets/{id}/createMessage', [TicketController::class, 'createMessage'])->name('tickets.createMessage');
     Route::patch('/tickets/{ticket}/close', [TicketController::class, 'close'])->name('tickets.close');
     Route::patch('/tickets/{ticket}/reopen', [TicketController::class, 'reopen'])->name('tickets.reopen');
 
-
+    //Temporary Incidents (Hanif)
     Route::get('/incidentTemps', [IncidentTempController::class, 'index'])->name('incidentTemps.index');
     Route::get('/incidentTemps/create', [IncidentTempController::class, 'create'])->name('incidentTemps.create');
     Route::post('/incidentTemps', [IncidentTempController::class, 'store'])->name('incidentTemps.store');
     Route::delete('/incidentTemps/{incidentTemp}', [IncidentTempController::class, 'destroy'])->name('incidentTemps.destroy');
 
+    // Asset (Zaim)
     Route::get('/assetManagement', [AssetManagementController::class, 'index'])->name('assetManagement.index');
 
     Route::get('/productTypes', [ProductTypeController::class, 'index'])->name('productTypes.index');
@@ -89,9 +92,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/deleteproducts/{id}', [ProductController::class, 'delete'])->name('products.delete');
 
 
+
   Route::resource('services', ServicesController::class);
   Route::resource('incidents', IncidentController::class);
   Route::resource('organizations', OrganizationController::class);
+
+    //service (Dinda)
+    Route::resource('services', ServicesController::class);
+
+    //organization (Zahra)
+    Route::resource('organizations', OrganizationController::class);
 
 });
 
