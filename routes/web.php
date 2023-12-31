@@ -11,9 +11,8 @@ use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\IncidentTempController;
 use App\Http\Controllers\AssetManagementController;
 use App\Http\Controllers\ProductTypeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrganizationController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,13 +95,18 @@ Route::middleware('auth')->group(function () {
 
   Route::resource('services', ServicesController::class);
   Route::resource('incidents', IncidentController::class);
+
+
   Route::resource('organizations', OrganizationController::class);
+  Route::resource('departments', DepartmentController::class);
 
     //service (Dinda)
     Route::resource('services', ServicesController::class);
 
-    //organization (Zahra)
-    Route::resource('organizations', OrganizationController::class);
+   
+
+});
+
 
 });
 

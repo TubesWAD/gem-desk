@@ -6,8 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 
-
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endrole', function (){
             return '<?php endif; ?>';
         });
-      Paginator::useBootstrap();
-
+        
+        Paginator::useBootstrap();
     }
 }

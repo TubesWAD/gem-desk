@@ -68,11 +68,9 @@
       @endforeach
     </table>
   </div>
-<div class="d-flex justify-content-start">
-    {{$organizations->links()}}
-</div>
+  
+  <div clas="d-flex justify-content-start">
+    {{ $organizations->links() }}
+  </div>
 
 @endsection
-@push('script')
-
-@endpush

@@ -62,7 +62,7 @@
         <div class="col-2">Industry Category</div>
         <div class="col-8">
           <select class="form-select form-select-sm" name="industry_category" aria-label=".form-select-sm example" value="{{ $organization->industry_category }}">
-            <option selected>Select here.../option>
+            <option selected>Select here...</option>
             <option value="Agriculture">Agriculture</option>
             <option value="Consulting & Professional Services">Consulting & Professional Services</option>
             <option value="Electrical Equipment">Electrical Equipment</option>
@@ -158,7 +158,7 @@
       </div>
       <br>
 
-      <div class="d-flex justify-content-center">
+      <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary me-md-2" type="submit">Save</button>
       </div>
     </div>
