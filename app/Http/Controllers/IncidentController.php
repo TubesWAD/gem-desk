@@ -126,7 +126,7 @@ class IncidentController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {   
-        $incident = Incident::all();
+        $incident = Incident::findOrFail($id);
         $incident->delete();
 
         return redirect()->route('incidents.index')
