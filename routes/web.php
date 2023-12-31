@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\SolutionController;
+use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\IncidentTempController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,8 @@ use App\Http\Controllers\IncidentTempController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::resource('/leaveTypes', LeaveTypeController::class);
+Route::patch('/leaveTypes/{leaveType}/approve', [LeaveTypeController::class, 'approve'])->name('leaveTypes.approve');
 
 Route::resource('/tickets',TicketController::class);
 Route::post('/tickets/{id}/createMessage', [TicketController::class, 'createMessage'])->name('tickets.createMessage');
