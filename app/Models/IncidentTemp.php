@@ -11,7 +11,13 @@ class IncidentTemp extends Model
     use HasFactory;
 
     protected $fillable = [
-      'incident','service_id', 'probability', 'risk_quadrant', 'risk_level'
+        'incident',
+        'probability',
+        'risk_impact',
+        'priority',
+        'incident_desc',
+        'service',
+        'asset',
     ];
 
 //    public function service() : BelongsTo

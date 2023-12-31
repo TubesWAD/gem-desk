@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('incident_temps', function (Blueprint $table){
             $table->id();
-//            $table->foreignId('service_id')->constrained()->onDelete('cascade');
-            $table->integer('service_id');
             $table->string('incident');
+            $table->string('service')->nullable();
+            $table->string('asset')->nullable();
             $table->string('probability');
-            $table->integer('risk_quadrant');
-            $table->string('risk_level');
+            $table->string('risk_impact');
+            $table->string('priority');
+            $table->string('incident_desc');
             $table->timestamps();
         });
     }

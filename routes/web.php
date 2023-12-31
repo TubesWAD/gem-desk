@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/incidentTemps/create', [IncidentTempController::class, 'create'])->name('incidentTemps.create');
     Route::post('/incidentTemps', [IncidentTempController::class, 'store'])->name('incidentTemps.store');
     Route::delete('/incidentTemps/{incidentTemp}', [IncidentTempController::class, 'destroy'])->name('incidentTemps.destroy');
+    Route::post('/incidentTemps/{incidentTemp}', [IncidentTempController::class, 'storeToIncidents'])->name('incidentTemps.storeToIncidents');
 
     // Asset (Zaim)
     Route::get('/assetManagement', [AssetManagementController::class, 'index'])->name('assetManagement.index');

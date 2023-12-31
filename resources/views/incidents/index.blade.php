@@ -15,15 +15,13 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Id</th>
                     <th>Incident</th>
                     <th>Service Impacted</th>
                     <th>Asset</th>
                     <th>Probability</th>
                     <th>Risk Impact</th>
                     <th>Priority</th>
-                    <th>Created</th>
-                    <th>Updated</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,15 +31,12 @@
                 @endphp
                 <tr>
                     <td>{{ $number++}}</td>
-                    <td>{{ $incident->id }}</td>
                     <td>{{ $incident->incident }}</td>
                     <td>{{ $incident->service }}</td>
                     <td>{{ $incident->asset }}</td>
-                    <td>{{ $incident->probability }}</td>   
+                    <td>{{ $incident->probability }}</td>
                     <td>{{ $incident->risk_impact }}</td>
                     <td class="{{ getPriorityClass($incident->priority) }}">{{ $incident->priority }}</td>
-                    <td>{{ $incident->created_at }}</td>
-                    <td>{{ $incident->updated_at }}</td>
                     <td>
                         <form action="{{ route('incidents.destroy', $incident->id)}}" method="POST">
                             <a class="btn btn-success" href="{{ route('incidents.show', $incident->id) }}">Show</a>

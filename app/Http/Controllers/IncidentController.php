@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Incident;
+use App\Models\Product;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -24,13 +26,15 @@ class IncidentController extends Controller
      */
     public function create(Request $request): View
     {
-        return view("incidents.create");
+        $assets = Product::all();
+        $services = Service::all();
+        return view("incidents.create", compact('assets', 'services'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse 
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
            'incident' => 'required|min:5',
@@ -45,12 +49,12 @@ class IncidentController extends Controller
         $incident->risk_impact = $request->risk_impact;
         $incident->priority = $request->priority;
         $incident->incident_desc = $request->incident_desc;
-        $incident->service_id = 1;
-        $incident->asset_id = 1;
+        $incident->service = $request->service;
+        $incident->asset = $request->asset;
 
         $probabilityMap = ['Low' => 1, 'Medium' => 2, 'High' => 3];
         $probability = $probabilityMap[$incident->probability] ?? 0;
-        
+
         $impactMap = ['Low' => 1, 'Medium' => 2, 'High' => 3];
         $impact = $impactMap[$incident->risk_impact] ?? 0;
 
@@ -64,10 +68,10 @@ class IncidentController extends Controller
         }
 
         $incident->save();
-        
+
         return redirect()->route('incidents.index')
                         ->with('success', 'Incident created successfuly.');
-        
+
     }
 
     /**
@@ -99,11 +103,11 @@ class IncidentController extends Controller
             'risk_impact' => 'required',
             'incident_desc' => 'required|min:5'
         ]);
-        
+
 
         $probabilityMap = ['Low' => 1, 'Medium' => 2, 'High' => 3];
         $probability = $probabilityMap[$request->probability] ?? 0;
-        
+
         $impactMap = ['Low' => 1, 'Medium' => 2, 'High' => 3];
         $impact = $impactMap[$request->risk_impact] ?? 0;
 
@@ -125,7 +129,7 @@ class IncidentController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
-    {   
+    {
         $incident = Incident::findOrFail($id);
         $incident->delete();
 

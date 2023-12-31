@@ -16,35 +16,42 @@
         </div>
     @endif
     <div>
-        <table class="table" >
+        <table class="table">
             <thead>
             <tr>
                 <th>No</th>
                 <th>Incident</th>
-                <th>Service</th>
+                <th>Service Impacted</th>
+                <th>Asset</th>
                 <th>Probability</th>
-                <th>Risk Quadrant</th>
-                <th>Risk Level</th>
-                <th class="d-flex justify-content-center">Action</th>
+                <th>Risk Impact</th>
+                <th>Priority</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
             @forelse($incidentTemps as $incidentTemp)
                 <tr>
                     <td>{{$loop->index+1}}</td>
-                    <td>{{$incidentTemp->incident}}</td>
-                    <td>{{$incidentTemp->service_id}}</td>
-                    <td>{{$incidentTemp->probability}}</td>
-                    <td>{{$incidentTemp->risk_quadrant}}</td>
-                    <td>{{$incidentTemp->risk_level}}</td>
+                    <td>{{ $incidentTemp->incident }}</td>
+                    <td>{{ $incidentTemp->service }}</td>
+                    <td>{{ $incidentTemp->asset }}</td>
+                    <td>{{ $incidentTemp->probability }}</td>
+                    <td>{{ $incidentTemp->risk_impact }}</td>
+                    <td>{{ $incidentTemp->priority }}</td>
                     <td class="d-flex justify-content-center">
+                        <form action="{{ route('incidentTemps.storeToIncidents', $incidentTemp)}}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary me-1" type="submit">Accept</button>
+                        </form>
                         <a class="btn btn-danger me-1" href="#" onclick="
                             event.preventDefault();
                             if(confirm('Do you want to delete this ?')){
                                 document.getElementById('delete-row-{{ $incidentTemp->id }}').submit();
                             }
                         ">Delete</a>
-                        <form id="delete-row-{{$incidentTemp->id}}" action="{{route('incidentTemps.destroy', $incidentTemp->id)}}" method="post">
+                        <form id="delete-row-{{$incidentTemp->id}}"
+                              action="{{route('incidentTemps.destroy', $incidentTemp->id)}}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             @csrf
                         </form>
@@ -65,3 +72,4 @@
         </div>
     </div>
 @endsection
+

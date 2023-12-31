@@ -50,6 +50,11 @@
                 <span class="material-symbols-outlined">support_agent</span>
                 <h3>Service Catalog</h3>
             </a>
+            <a href="{{route('incidentTemps.index')}}" class="{{ request()->routeIs('incidentTemps**') ? 'active' : '' }}">
+                <span class="material-symbols-outlined">notification_important</span>
+                <h3>Incident Temporary</h3>
+            </a>
+
             <a href="{{route('incidents.index')}}" class="{{ request()->routeIs('incidents**') ? 'active' : '' }}">
                 <span class="material-symbols-outlined">emergency_home</span>
                 <h3>Incident Management</h3>
