@@ -46,7 +46,7 @@
                     @forelse($incidents as $incident)
                         <option value="{{ $incident->incident }}">{{ $incident->incident }}</option>
                     @empty
-                        <option value="" >There's no incident</option>
+                        <option >There's no incident</option>
                     @endforelse
                 </select>
                 <a class="btn btn-outline-warning rounded" href="{{route('incidentTemps.create')}}" role="button">No Types</a>

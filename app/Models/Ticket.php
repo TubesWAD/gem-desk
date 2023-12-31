@@ -11,7 +11,7 @@ class Ticket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'ticket_type','files','status','is_resolved',
+        'title', 'description','user_id', 'ticket_type','files','status','is_resolved',
     ];
 
     public function solutions() : HasMany

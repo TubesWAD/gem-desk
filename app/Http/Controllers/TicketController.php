@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTicket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Models\Incident;
+use App\Models\LeaveType;
 use App\Models\Solution;
 use App\Models\Ticket;
 use Illuminate\Http\RedirectResponse;
@@ -63,9 +64,19 @@ class TicketController extends Controller
                 return $output;
             }
 
+            if (auth()->user()->roles == 'admin'){
+                $tickets = Ticket::query()->where('title', 'LIKE', '%' . $query . '%')
+                    ->simplePaginate(8);
+            }else{
+                $user_id = auth()->user()->id;
+                $tickets = Ticket::query()
+                    ->where('title', 'LIKE', '%' . $query . '%')
+                    ->where('user_id', '=', $user_id)
+                    ->simplePaginate(8);
+            }
 
-            $tickets = Ticket::query()->where('title', 'LIKE', '%' . $query . '%')
-                ->simplePaginate(8);
+
+
             return view('tickets.index', compact('tickets'));
         }
 
@@ -95,7 +106,14 @@ class TicketController extends Controller
         }
         $ticket->status = "open";
         $ticket->is_resolved = 0;
-        $ticket->ticket_type = $request->ticket_type;
+
+        if ($request->has('ticket_type')){
+            $ticket->ticket_type = $request->ticket_type;
+        }else{
+            $ticket->ticket_type = '';
+        }
+
+        $ticket->user_id = auth()->user()->id;
 
         $ticket->save($request->validated());
         return redirect(route('tickets.index'))

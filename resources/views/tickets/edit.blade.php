@@ -26,6 +26,7 @@
                 {{ $message }}
             </div>
         @endif
+        @role('admin')
         <div class=" justify-content-end">
             @if($ticket->status == 'open')
                 <form action="{{route('tickets.close', $ticket)}}" method="post">
@@ -41,6 +42,7 @@
                 </form>
             @endif
         </div>
+        @endrole
     </div>
     <br>
     <link href="{{asset('css/file_upload.css')}}" rel="stylesheet" />
