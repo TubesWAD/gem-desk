@@ -23,4 +23,9 @@ class Organization extends Model
         'fax_no',
         'web_url',
     ];
+
+    public function services()
+    {
+        return $this->hasMany(Service::class, 'id_organization'); // Foreign key: id_product
+    }
 }

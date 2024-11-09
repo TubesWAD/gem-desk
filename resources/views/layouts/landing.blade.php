@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Desk</title>
+    <link rel="icon" href="{{ asset('img/gd-logo.png') }}" type="image/png"/>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/landing.css')}}"/>
 </head>
@@ -35,11 +36,7 @@
                 <div class="card-body">
                     <h5 class="card-title">User</h5>
                     <p class="card-text custom-card-text">This feature focuses on the comprehensive management and
-                        administration of user accounts within the system. It enables the creation, modification, and
-                        deletion of user profiles, along with the assignment and management of user permissions and
-                        roles. This ensures secure and efficient access control, tailored to the specific needs and
-                        hierarchy of the organization, thereby enhancing overall workflow efficiency and data
-                        security.</p>
+                        administration of user accounts within the system.</p>
                 </div>
             </div>
         </div>

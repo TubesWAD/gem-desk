@@ -14,12 +14,23 @@ class Service extends Model
     protected $fillable = [
         'name',
         'service_categories',
-        'asset',
         'description',
         'cost',
+        'quantity',
         'availability',
         'hours',
-        'owned',
+        'id_organization',
         'files',
+        'id_product',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'id_product'); // Foreign key: id_products
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class, 'id_organization'); // Foreign key: id_organization
+    }
 }

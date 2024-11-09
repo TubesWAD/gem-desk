@@ -31,7 +31,7 @@
                 <label for="asset_type" class="form-label">Asset Type</label>
                 <select class="form-control" id="asset_type" name="asset_type" aria-label="Default select example">
                     <option selected>Asset</option>
-                    <option value="1">Consumable</option>
+                    <option value="Consumable">Consumable</option>
                 </select>
             </div>
 
@@ -39,7 +39,7 @@
                 <label for="asset_category" class="form-label">Asset Category</label>
                 <select class="form-control" id="asset_category" name="asset_category"  aria-label="Default select example">
                     <option selected>IT</option>
-                    <option value="1">Non IT</option>
+                    <option value="Non IT">Non IT</option>
                 </select>
             </div>
 

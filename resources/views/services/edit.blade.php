@@ -5,7 +5,9 @@
 <div>
     <div class="row">
         <div class="col-lg-12 margin-tb d-flex align-items-center" style="border-bottom: 2px solid #ccc; padding-bottom: 0px; margin-bottom: 20px;">
-            <a class="btn btn-primary" href="{{ route('services.index') }}" style="padding-bottom: 10px; margin-bottom: 15px; margin-right: 30px;">Back</a>
+            <a href="{{ route('services.index') }}" class="btn" style="color: black; margin-bottom: 15px; margin-right: 10px; display: flex; align-items: center;">
+                <span class="material-symbols-outlined" style="margin-right: 2px;">arrow_back</span>
+            </a>
             <h2 style="padding-bottom: 10px; margin-bottom: 10px;">Edit {{ $service->name }} Service</h2>
         </div>
     </div>
@@ -44,7 +46,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
                 <div class="form-group">
                     <strong>Name:</strong>
                     <input type="text" name="name" value="{{ $service->name }}" class="form-control" placeholder="Name">
@@ -86,23 +88,48 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
-                <label for="availabilityTarget" class="form-label">Availability Target (%):</label>
+                <strong for="availabilityTarget" class="form-label">Availability Target (%):</strong>
                 <input type="number" value="{{ $service->availability}}" class="form-control" id="availabilityTarget" name="availability" placeholder="Availability Target">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 15px;">
-                <div class="form-group">
+
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <div class="form-group" style="flex: 1;">
                     <strong>Cost:</strong>
-                    <input type="text" name="cost" value="{{ $service->cost }}" class="form-control" placeholder="cost">
+                    <input type="text" name="cost" id="cost" value="{{ $service->cost }}" class="form-control" placeholder="cost" oninput="calculateTotal()">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <strong>Quantity:</strong>
+                    <input type="number" name="quantity" id="quantity" value="{{ $service->quantity }}" class="form-control" placeholder="quantity" oninput="calculateTotal()">
                 </div>
             </div>
+            <div style="font-size: 1.1em; font-weight: bold; padding: 10px; background-color: rgba(115, 128, 236, 0.5); border-radius: 4px; margin-top: 10px; margin-bottom: 10px;">
+                Total: <span id="total">Rp {{ number_format($service->cost * $service->quantity, 0, ',', '.') }}</span>
+            </div>
+            
+            <script>
+                function calculateTotal() {
+                    const cost = document.getElementById('cost').value.replace(/\D/g, '') || 0;
+                    const quantity = document.getElementById('quantity').value || 0;
+                    const total = parseFloat(cost) * parseFloat(quantity);
+                    
+                    const formattedTotal = new Intl.NumberFormat('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR'
+                    }).format(total);
+                    
+                    document.getElementById('total').textContent = formattedTotal;
+                }
+                calculateTotal();
+            </script>
+            
 
         </div>
 
     </div>
 
     <div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-end">
+            <button type="submit" class="btn btn-lg" style="background-color: #7380EC; border-color: #7380EC; color: white;">Submit</button>
         </div>
     </div>
 
